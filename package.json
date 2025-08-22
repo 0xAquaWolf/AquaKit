@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "dev:debug": "NODE_OPTIONS='--inspect' next dev --turbopack",
+    "debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "format": "prettier --write .",
+    "format": "prettier -write .",
     "format:check": "prettier --check ."
   },
   "dependencies": {
