@@ -32,9 +32,8 @@
 <h2 align="center">About This Project</h3>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/0xAquaWolf/aquakit/main/public/images/aquakit-preview.png" alt="AquaKit Screenshot" style="border-radius: 20px; max-width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
+  <img src="https://raw.githubusercontent.com/0xAquaWolf/aquakit/refs/heads/main/public/images/aquakit-preview.png" alt="AquaKit Screenshot" style="border-radius: 20px; max-width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
 </div>
-
 
 AquaKit is the ultimate AI SaaS starter kit designed to dramatically accelerate your development process. Built with today's most powerful developer tools - Next.js 15, TailwindCSS, Claude Code + Cursor, Better Auth, Convex, Trigger.dev, and Polar.sh - this starter kit eliminates months of setup and configuration, allowing you to focus on building your unique AI features and getting to market faster.
 
@@ -58,21 +57,25 @@ Key Features:
 <div align="center">
 
 ### 🧠 AI Development Stack
+
 <img src="https://img.shields.io/badge/Claude_Code-FF6B35?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code">
 <img src="https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" alt="Cursor">
 
 ### 🚀 Frontend Stack
+
 <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
 <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
 <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
 
 ### ⚡ Backend & Infrastructure Stack
+
 <img src="https://img.shields.io/badge/Convex-FF6B35?style=for-the-badge&logo=convex&logoColor=white" alt="Convex">
 <img src="https://img.shields.io/badge/Better_Auth-4285F4?style=for-the-badge&logo=auth0&logoColor=white" alt="Better Auth">
 <img src="https://img.shields.io/badge/Trigger.dev-000000?style=for-the-badge&logo=trigger&logoColor=white" alt="Trigger.dev">
 
 ### 💰 Monetization Stack
+
 <img src="https://img.shields.io/badge/Polar.sh-6366F1?style=for-the-badge&logo=polar&logoColor=white" alt="Polar.sh">
 
 </div>
@@ -138,18 +141,21 @@ The application will be available at [http://localhost:3000](http://localhost:30
 This is a Next.js 15 application with App Router that integrates:
 
 **Authentication Stack:**
+
 - Better Auth with Convex integration (`@convex-dev/better-auth`)
 - Auth client configured in `src/lib/auth-client.ts`
 - Authentication routes in `src/app/api/auth/[...all]/route.ts`
 - Convex auth configuration in `convex/auth.config.ts`
 
 **Convex Integration:**
+
 - Convex backend with Better Auth plugin in `convex/convex.config.ts`
 - Client provider wraps the app in `src/app/ConvexClientProvider.tsx`
 - Schema definitions in `convex/schema.ts`
 - HTTP endpoints in `convex/http.ts`
 
 **Frontend Structure:**
+
 - Next.js App Router with TypeScript
 - Tailwind CSS v4 for styling with custom configuration
 - UI components in `src/components/ui/`
@@ -168,6 +174,7 @@ AquaKit dramatically reduces development time by providing a complete, pre-integ
 - **Learn the modern stack**: Perfect reference implementation of today's best developer tools
 
 **Perfect for:**
+
 - AI startups wanting to move fast
 - Developers building AI-powered SaaS products
 - Teams looking to modernize their development stack
@@ -178,6 +185,7 @@ AquaKit dramatically reduces development time by providing a complete, pre-integ
 ## Roadmap
 
 ### ✅ Core Stack (Completed)
+
 - [x] Next.js 15 with App Router setup
 - [x] Convex backend integration
 - [x] Better Auth authentication system
@@ -188,18 +196,21 @@ AquaKit dramatically reduces development time by providing a complete, pre-integ
 - [x] Cursor IDE configuration
 
 ### 🚧 AI & Automation Features (In Progress)
+
 - [ ] Trigger.dev background job examples
 - [ ] AI integration patterns and examples
 - [ ] Claude API integration templates
 - [ ] Automated workflow examples
 
 ### 💰 Monetization Features (Planned)
+
 - [ ] Polar.sh subscription system integration
 - [ ] Payment processing setup
 - [ ] User dashboard and analytics
 - [ ] Usage tracking and billing
 
 ### 🔧 Developer Experience (Planned)
+
 - [ ] Component library expansion
 - [ ] Testing suite implementation
 - [ ] CI/CD pipeline setup
@@ -246,24 +257,29 @@ Twitter / X - [@0xAquaWolf](https://twitter.com/0xAquaWolf)
 ## Acknowledgments
 
 ### 🧠 AI Development Tools
+
 - [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
 - [Cursor IDE](https://cursor.sh/)
 
 ### 🚀 Core Stack Documentation
+
 - [Next.js Documentation](https://nextjs.org/docs)
 - [React Documentation](https://react.dev/)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 - [TailwindCSS Documentation](https://tailwindcss.com/docs)
 
 ### ⚡ Backend & Infrastructure
+
 - [Convex Documentation](https://docs.convex.dev/)
 - [Better Auth Documentation](https://www.better-auth.com/)
 - [Trigger.dev Documentation](https://trigger.dev/docs)
 
 ### 💰 Monetization & Business
+
 - [Polar.sh Documentation](https://docs.polar.sh/)
 
 ### 🔧 Additional Tools
+
 - [Zustand Documentation](https://zustand-demo.pmnd.rs/)
 - [Turbopack Documentation](https://turbo.build/pack)
 - [Lucide React Icons](https://lucide.dev/)
