@@ -5,10 +5,10 @@
 <!-- PROJECT SHIELDS -->
 <div align="center">
 <!-- PROJECT SHIELDS -->
-<img src="https://img.shields.io/github/forks/0xAquaWolf/aquakit.svg?style=for-the-badge" alt="Forks">
-<img src="https://img.shields.io/github/stars/0xAquaWolf/aquakit.svg?style=for-the-badge" alt="Stars">
-<img src="https://img.shields.io/github/issues/0xAquaWolf/aquakit.svg?style=for-the-badge" alt="Issues">
-<img src="https://img.shields.io/github/license/0xAquaWolf/aquakit.svg?style=for-the-badge" alt="License">
+<img src="https://img.shields.io/github/forks/0xAquaWolf/AquaKit.svg?style=for-the-badge" alt="Forks">
+<img src="https://img.shields.io/github/stars/0xAquaWolf/AquaKit.svg?style=for-the-badge" alt="Stars">
+<img src="https://img.shields.io/github/issues/0xAquaWolf/AquaKit.svg?style=for-the-badge" alt="Issues">
+<img src="https://img.shields.io/github/license/0xAquaWolf/AquaKit.svg?style=for-the-badge" alt="License">
 
 </div>
 
@@ -21,9 +21,9 @@
     <br />
     <a href="#demo">View Demo</a>
     ·
-    <a href="https://github.com/0xAquaWolf/aquakit/issues">Report Bug</a>
+    <a href="https://github.com/0xAquaWolf/AquaKit/issues">Report Bug</a>
     ·
-    <a href="https://github.com/0xAquaWolf/aquakit/issues">Request Feature</a>
+    <a href="https://github.com/0xAquaWolf/AquaKit/issues">Request Feature</a>
   </p>
 </div>
 
@@ -107,7 +107,7 @@ CONVEX_SITE_URL="http://localhost:3000"
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/0xAquaWolf/aquakit.git
+   git clone https://github.com/0xAquaWolf/AquaKit.git
    ```
 2. Install packages
    ```sh
@@ -221,7 +221,7 @@ AquaKit dramatically reduces development time by providing a complete, pre-integ
 - [ ] Mobile responsiveness improvements
 - [ ] Docker setup for easy deployment
 
-See the [open issues](https://github.com/0xAquaWolf/aquakit/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/0xAquaWolf/AquaKit/issues) for a full list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -295,11 +295,11 @@ Twitter / X - [@0xAquaWolf](https://twitter.com/0xAquaWolf)
 
 ## Star History
 
-<a href="https://star-history.com/#0xAquaWolf/aquakit&Date">
+<a href="https://star-history.com/#0xAquaWolf/AquaKit&Date">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=0xAquaWolf/aquakit&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=0xAquaWolf/aquakit&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=0xAquaWolf/aquakit&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=0xAquaWolf/AquaKit&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=0xAquaWolf/AquaKit&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=0xAquaWolf/AquaKit&type=Date" />
  </picture>
 </a>
 
