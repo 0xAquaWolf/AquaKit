@@ -32,7 +32,7 @@
 <h2 align="center">About This Project</h3>
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/0xAquaWolf/aquakit/refs/heads/main/public/images/aquakit-preview.png" alt="AquaKit Screenshot" style="border-radius: 20px; max-width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
+  <img src="/public/images/aquakit-preview.png" alt="AquaKit Screenshot" style="border-radius: 20px; max-width: 100%;" />
 </div>
 
 AquaKit is the ultimate AI SaaS starter kit designed to dramatically accelerate your development process. Built with today's most powerful developer tools - Next.js 15, TailwindCSS, Claude Code + Cursor, Better Auth, Convex, Trigger.dev, and Polar.sh - this starter kit eliminates months of setup and configuration, allowing you to focus on building your unique AI features and getting to market faster.
