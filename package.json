@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
     "debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
     "format": "prettier -write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "dev": "next dev --turbopack",
+    "dev:backend": "convex dev --typecheck-components",
+    "dev:frontend": "next dev --experimental-https --turbopack"
   },
   "dependencies": {
     "@convex-dev/better-auth": "^0.7.15",
@@ -19,6 +21,7 @@
     "convex": "^1.25.4",
     "lucide-react": "^0.540.0",
     "next": "15.5.0",
+    "npm-run-all": "^4.1.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tailwind-merge": "^3.3.1",
