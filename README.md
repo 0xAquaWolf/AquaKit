@@ -32,7 +32,7 @@
 <h2 align="center">About This Project</h3>
 
 <div align="center">
-  <img src="/public/images/aquakit-preview.png" alt="AquaKit Screenshot" style="border-radius: 20px; max-width: 100%;" />
+  <img src="https://raw.githubusercontent.com/0xAquaWolf/aquakit/main/public/images/aquakit-preview.png" alt="AquaKit Screenshot" style="border-radius: 20px; max-width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
 </div>
 
 
