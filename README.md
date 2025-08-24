@@ -2,6 +2,14 @@
 
 <a name="readme-top"></a>
 
+> **🚧 WORK IN PROGRESS** 
+> 
+> This project is currently being built live on YouTube! Follow along and learn as I build this AI SaaS starter kit from scratch.
+> 
+> 📺 **[Subscribe to my YouTube channel](https://www.youtube.com/@0xAquaWolf)** to catch all the episodes
+> 
+> 🎬 **[Watch the complete build series](https://www.youtube.com/watch?v=4Q85SxxnUZc&list=PLwbt1uBf9iqDQyGKEJVj2iA3FFsNxMiXj&pp=gAQB)** - Building AquaKit live!
+
 <!-- PROJECT SHIELDS -->
 <div align="center">
 <!-- PROJECT SHIELDS -->
