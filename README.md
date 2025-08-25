@@ -194,6 +194,32 @@ AquaKit dramatically reduces development time by providing a complete, pre-integ
 
 ## Roadmap
 
+> **🎯 Project Mission: Complete Data Ownership**  
+> AquaKit's ultimate goal is to give you **complete ownership of your data**. We believe you should control your infrastructure and data, not be locked into proprietary cloud services. That's why we're building two versions to meet different needs while maintaining the same core principle.
+
+### 🌟 Two Deployment Options
+
+#### ☁️ **Cloud Version** (Current)
+The current implementation uses managed cloud services for rapid development and deployment:
+- **Convex** for real-time backend and database
+- **Better Auth** (package-based, not a service like Clerk)
+- **Trigger.dev** cloud for background jobs
+- **Polar.sh** for payments and subscriptions
+
+*Perfect for: Getting to market quickly, prototyping, teams that prefer managed services*
+
+#### 🐳 **Dockerized Version** (Coming Soon)
+A completely self-hostable version for maximum data ownership:
+- **One-click Docker deployment** to any server (Hetzner, DigitalOcean, Fly.io, etc.)
+- **Containerized Convex** - self-hosted to own all your data while keeping the same functionality
+- **Better Auth** (already package-based, perfect for self-hosting)
+- **Self-hosted Trigger.dev** for background job processing
+- **Self-hosted payment processing**
+
+*Perfect for: Complete data control, enterprise deployments, privacy-focused organizations*
+
+---
+
 ### ✅ Core Stack (Completed)
 
 - [x] Next.js 15 with App Router setup
@@ -219,6 +245,17 @@ AquaKit dramatically reduces development time by providing a complete, pre-integ
 - [ ] User dashboard and analytics
 - [ ] Usage tracking and billing
 
+### 🐳 Self-Hosting Features (Major Focus)
+
+- [ ] **Docker containerization** with one-click deployment
+- [ ] **Containerized Convex** - self-hosted to maintain full data ownership while keeping all functionality
+- [ ] **Better Auth integration** (already package-based, perfect for containerized deployments)
+- [ ] **Self-hosted Trigger.dev** for background job processing
+- [ ] **Payment system alternatives** for self-hosted deployments
+- [ ] **Environment configuration wizard** for easy setup
+- [ ] **Health monitoring and logging** for self-hosted instances
+- [ ] **Backup and restore utilities** for complete data control
+
 ### 🔧 Developer Experience (Planned)
 
 - [ ] Component library expansion
@@ -227,7 +264,8 @@ AquaKit dramatically reduces development time by providing a complete, pre-integ
 - [ ] API rate limiting and usage tracking
 - [ ] Performance optimization
 - [ ] Mobile responsiveness improvements
-- [ ] Docker setup for easy deployment
+- [ ] **Migration tools** (Cloud ↔ Self-hosted)
+- [ ] **Infrastructure templates** for popular hosting providers
 
 See the [open issues](https://github.com/0xAquaWolf/AquaKit/issues) for a full list of proposed features (and known issues).
 
