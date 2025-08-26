@@ -2,12 +2,12 @@
 
 <a name="readme-top"></a>
 
-> **🚧 WORK IN PROGRESS** 
-> 
+> **🚧 WORK IN PROGRESS**
+>
 > This project is currently being built live on YouTube! Follow along and learn as I build this AI SaaS starter kit from scratch.
-> 
+>
 > 📺 **[Subscribe to my YouTube channel](https://www.youtube.com/@0xAquaWolf)** to catch all the episodes
-> 
+>
 > 🎬 **[Watch the complete build series](https://www.youtube.com/watch?v=4Q85SxxnUZc&list=PLwbt1uBf9iqDQyGKEJVj2iA3FFsNxMiXj&pp=gAQB)** - Building AquaKit live!
 
 <!-- PROJECT SHIELDS -->
@@ -200,23 +200,27 @@ AquaKit dramatically reduces development time by providing a complete, pre-integ
 ### 🌟 Two Deployment Options
 
 #### ☁️ **Cloud Version** (Current)
+
 The current implementation uses managed cloud services for rapid development and deployment:
+
 - **Convex** for real-time backend and database
 - **Better Auth** (package-based, not a service like Clerk)
 - **Trigger.dev** cloud for background jobs
 - **Polar.sh** for payments and subscriptions
 
-*Perfect for: Getting to market quickly, prototyping, teams that prefer managed services*
+_Perfect for: Getting to market quickly, prototyping, teams that prefer managed services_
 
 #### 🐳 **Dockerized Version** (Coming Soon)
+
 A completely self-hostable version for maximum data ownership:
+
 - **One-click Docker deployment** to any server (Hetzner, DigitalOcean, Fly.io, etc.)
 - **Containerized Convex** - self-hosted to own all your data while keeping the same functionality
 - **Better Auth** (already package-based, perfect for self-hosting)
 - **Self-hosted Trigger.dev** for background job processing
 - **Self-hosted payment processing**
 
-*Perfect for: Complete data control, enterprise deployments, privacy-focused organizations*
+_Perfect for: Complete data control, enterprise deployments, privacy-focused organizations_
 
 ---
 
@@ -298,7 +302,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Twitter / X - [@0xAquaWolf](https://twitter.com/0xAquaWolf)
 
-[Aquawolf Academy Discord](https://discord.gg/wzPBjEcn87)
+[Aquawolf Academy Discord](https://discord.gg/Y5gvYaw2k5)
 
 <!-- ACKNOWLEDGMENTS -->
 
