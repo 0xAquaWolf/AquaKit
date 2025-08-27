@@ -94,6 +94,21 @@ export function LoginForm({
     }
   };
 
+  const handleGitHubSignIn = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      await authClient.signIn.social({
+        provider: "github",
+        callbackURL: "/dashboard",
+      });
+    } catch (err) {
+      console.error('GitHub sign in error:', err);
+      setError('Failed to sign in with GitHub');
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card>
@@ -160,7 +175,9 @@ export function LoginForm({
                 <Button
                   variant="outline"
                   type="button"
-                  className="w-full cursor-pointer "
+                  className="w-full cursor-pointer"
+                  onClick={handleGitHubSignIn}
+                  disabled={isLoading}
                 >
                   <svg
                     className="h-4 w-4"
