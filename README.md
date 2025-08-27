@@ -52,7 +52,7 @@ AquaKit is the ultimate AI SaaS starter kit designed to dramatically accelerate 
 Key Features:
 
 - **🚀 Speed-First Development**: AI-powered coding with Claude Code + Cursor for 10x faster development
-- **🔐 OAuth Authentication**: Multiple provider support with GitHub & Google sign-in out of the box
+- **🔐 OAuth Authentication**: Multiple provider support with GitHub, Google & Discord sign-in out of the box
 - **👤 User Management**: Complete user profiles with avatar support and session handling
 - **🔑 Better Auth Integration**: Secure authentication with Convex backend integration
 - **⚡ Real-time Everything**: Convex provides instant data synchronization and serverless functions
@@ -67,19 +67,22 @@ Key Features:
 ## ✨ Recent Updates (August 2025)
 
 ### 🔐 Enhanced Authentication System
-- **OAuth Provider Integration**: Added GitHub and Google sign-in functionality with comprehensive setup guides
+
+- **OAuth Provider Integration**: Added GitHub, Google, and Discord sign-in functionality with comprehensive setup guides
 - **User Avatar System**: Implemented dynamic avatar generation and external avatar URL support
 - **Improved Login UI**: Enhanced login form with password visibility toggle and OAuth provider buttons
 - **Session Management**: Robust session handling with loading states and error management
 
-### 🎨 UI/UX Improvements  
+### 🎨 UI/UX Improvements
+
 - **Sidebar Navigation**: Added user sidebar with profile information and navigation
 - **Dashboard Integration**: Dedicated dashboard with improved user experience
 - **Theme Support**: Integrated theme provider with consistent styling
 - **Component Library**: Expanded UI components with Radix UI integration
 
 ### 📚 Documentation & Setup
-- **OAuth Setup Guides**: Detailed step-by-step guides for GitHub and Google OAuth configuration
+
+- **OAuth Setup Guides**: Detailed step-by-step guides for GitHub, Google, and Discord OAuth configuration
 - **Environment Configuration**: Comprehensive environment variable documentation with .env.example
 - **Developer Experience**: Improved development workflows and debugging capabilities
 
@@ -136,16 +139,24 @@ GITHUB_CLIENT_ID="your-github-client-id"
 GITHUB_CLIENT_SECRET="your-github-client-secret"
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
+DISCORD_CLIENT_ID="your-discord-client-id"
+DISCORD_CLIENT_SECRET="your-discord-client-secret"
 ```
 
 #### OAuth Setup Guides
 
 For OAuth authentication setup, refer to our detailed guides:
 
-- **[GitHub OAuth Setup](./setup-github-oauth.md)** - Complete guide for setting up GitHub sign-in
+- **[GitHub OAuth Setup](./docs/setup-github-oauth.md)** - Complete guide for setting up GitHub sign-in
 - **[Google OAuth Setup](./docs/setup-google-oauth.md)** - Complete guide for setting up Google sign-in
+- **[Discord OAuth Setup](./docs/setup-discord-oauth.md)** - Complete guide for setting up Discord sign-in
 
-Both guides include steps for configuring OAuth apps, setting up environment variables in both your local environment and Convex deployment.
+All guides include step-by-step instructions for:
+
+- Creating OAuth applications in each provider's developer console
+- Configuring callback URLs and scopes
+- Setting up environment variables in both your local environment and Convex deployment
+- Security best practices and troubleshooting tips
 
 ### Installation
 
@@ -163,6 +174,39 @@ Both guides include steps for configuring OAuth apps, setting up environment var
    ```
 
 The application will be available at [http://localhost:3000](http://localhost:3000)
+
+## 📚 Documentation
+
+### OAuth Provider Setup Guides
+
+AquaKit supports multiple OAuth providers for user authentication. Choose the providers you want to enable for your application:
+
+| Provider       | Setup Guide                                      | Features                                                   |
+| -------------- | ------------------------------------------------ | ---------------------------------------------------------- |
+| 🐙 **GitHub**  | **[Setup Guide](./docs/setup-github-oauth.md)**  | Developer-focused authentication, access to GitHub profile |
+| 🔍 **Google**  | **[Setup Guide](./docs/setup-google-oauth.md)**  | Wide user base, reliable OAuth implementation              |
+| 💬 **Discord** | **[Setup Guide](./docs/setup-discord-oauth.md)** | Gaming/community focused, rich user profiles               |
+
+Each guide provides:
+
+- ✅ Step-by-step OAuth app creation
+- ✅ Environment variable configuration (local & Convex)
+- ✅ Security best practices
+- ✅ Troubleshooting tips
+
+### Quick Setup Commands
+
+After following the setup guides, configure your environment variables:
+
+```bash
+# Local environment (.env.local)
+GITHUB_CLIENT_ID="your-github-client-id"
+GITHUB_CLIENT_SECRET="your-github-client-secret"
+
+# Convex environment
+npx convex env set GITHUB_CLIENT_ID "your-github-client-id"
+npx convex env set GITHUB_CLIENT_SECRET "your-github-client-secret"
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -263,9 +307,9 @@ _Perfect for: Complete data control, enterprise deployments, privacy-focused org
 ### ✅ Core Stack (Completed)
 
 - [x] Next.js 15 with App Router setup
-- [x] Convex backend integration  
+- [x] Convex backend integration
 - [x] Better Auth authentication system
-- [x] OAuth provider integration (GitHub & Google)
+- [x] OAuth provider integration (GitHub, Google & Discord)
 - [x] User profile and avatar system
 - [x] Enhanced login forms with social sign-in
 - [x] Sidebar navigation and dashboard
@@ -275,7 +319,7 @@ _Perfect for: Complete data control, enterprise deployments, privacy-focused org
 - [x] Development tooling (ESLint, Prettier)
 - [x] Claude Code integration guide
 - [x] Cursor IDE configuration
-- [x] Comprehensive OAuth setup documentation
+- [x] Comprehensive OAuth setup documentation (GitHub, Google, Discord)
 - [x] Environment configuration with .env.example
 
 ### 🚧 AI & Automation Features (In Progress)

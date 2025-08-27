@@ -33,7 +33,7 @@ export const createAuth = (ctx: GenericCtx) =>
     // Simple non-verified email/password to get started
     emailAndPassword: {
       enabled: true,
-      requireEmailVerification: true,
+      requireEmailVerification: false,
       // sendResetPassword: async ({ user, url }) => {
       //   await sendResetPassword(requireMutationCtx(ctx), {
       //     to: user.email,

@@ -11,7 +11,13 @@
     "format:check": "prettier --check .",
     "dev": "next dev --turbopack",
     "dev:backend": "convex dev --typecheck-components",
-    "dev:frontend": "next dev --experimental-https --turbopack"
+    "dev:frontend": "next dev --experimental-https --turbopack",
+    "env:setup": "node scripts/setup-env.js",
+    "env:setup:dev": "node scripts/setup-env.js dev",
+    "env:setup:prod": "node scripts/setup-env.js prod",
+    "env:list": "npx convex env list",
+    "env:list:dev": "npx convex env list --dev",
+    "deploy:prod": "npx convex deploy"
   },
   "dependencies": {
     "@convex-dev/better-auth": "^0.7.15",
