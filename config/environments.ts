@@ -8,7 +8,7 @@
 
 export const environments = {
   development: {
-    convexUrl: 'https://quaint-rabbit-453.convex.cloud',
+    convexUrl: 'https://your-dev-deployment.convex.cloud',
     siteUrl: 'http://localhost:3000',
     redirectUrls: {
       github: 'http://localhost:3000/api/auth/callback/github',
@@ -17,7 +17,7 @@ export const environments = {
     },
   },
   production: {
-    convexUrl: 'https://oceanic-cormorant-345.convex.cloud',
+    convexUrl: 'https://your-prod-deployment.convex.cloud',
     siteUrl: 'https://your-production-domain.com', // Update this!
     redirectUrls: {
       github: 'https://your-production-domain.com/api/auth/callback/github',

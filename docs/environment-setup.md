@@ -27,11 +27,11 @@ Create a `.env.local` file in your project root:
 
 ```bash
 # Development
-NEXT_PUBLIC_CONVEX_URL=https://quaint-rabbit-453.convex.cloud
+NEXT_PUBLIC_CONVEX_URL=https://your-dev-deployment.convex.cloud
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 # Production
-# NEXT_PUBLIC_CONVEX_URL=https://oceanic-cormorant-345.convex.cloud
+# NEXT_PUBLIC_CONVEX_URL=https://your-prod-deployment.convex.cloud
 # NEXT_PUBLIC_SITE_URL=https://your-production-domain.com
 ```
 
