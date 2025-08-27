@@ -3,6 +3,9 @@
 import { Calendar, Home, Inbox, Search, Settings, LogOut } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { Avatar } from "@/components/ui/avatar";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 import {
   Sidebar,
@@ -48,6 +51,7 @@ const items = [
 export function AppSidebar() {
   const router = useRouter();
   const { data: session } = authClient.useSession();
+  const currentUser = useQuery(api.auth.getCurrentUser);
 
   const handleLogout = async () => {
     await authClient.signOut();
@@ -81,8 +85,22 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <div className="px-2 py-2 text-sm text-muted-foreground">
-              {session?.user?.email || "User"}
+            <div className="flex items-center gap-3 px-2 py-2">
+              <Avatar
+                avatarUrl={currentUser?.avatarUrl}
+                name={currentUser?.name}
+                email={currentUser?.email || session?.user?.email || ""}
+                avatarColor={currentUser?.avatarColor}
+                size="sm"
+              />
+              <div className="flex flex-col min-w-0">
+                <div className="text-sm font-medium truncate">
+                  {currentUser?.name || "User"}
+                </div>
+                <div className="text-xs text-muted-foreground truncate">
+                  {currentUser?.email || session?.user?.email}
+                </div>
+              </div>
             </div>
           </SidebarMenuItem>
           <SidebarMenuItem>
