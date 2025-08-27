@@ -22,11 +22,13 @@ This guide walks through the steps needed to set up GitHub OAuth for your applic
 ## 3. Configure Authorization Callback URL
 
 For local development, use:
+
 ```
 http://localhost:3000/api/auth/callback/github
 ```
 
 For production, replace with your actual domain:
+
 ```
 https://yourdomain.com/api/auth/callback/github
 ```
@@ -42,6 +44,7 @@ https://yourdomain.com/api/auth/callback/github
 ## 5. Update Your Application Settings (Optional)
 
 You can later update your OAuth app settings by:
+
 - Going back to **Settings → Developer settings → OAuth Apps**
 - Clicking on your application name
 - Updating URLs, description, or regenerating secrets as needed
@@ -50,13 +53,13 @@ You can later update your OAuth app settings by:
 
 ## Quick Reference Table
 
-| Step              | Where                                    | Notes                                    |
-| ----------------- | ---------------------------------------- | ---------------------------------------- |
-| Developer Settings| Profile → Settings → Developer settings | Access OAuth app management             |
-| Create App        | OAuth Apps → New OAuth App              | Fill required fields                     |
-| Callback URL      | Authorization callback URL field         | Set correctly for your environment      |
-| Credentials       | App settings page                        | Copy Client ID and generate secret      |
-| Update Settings   | OAuth Apps → Your app name              | Modify configuration as needed           |
+| Step               | Where                                   | Notes                              |
+| ------------------ | --------------------------------------- | ---------------------------------- |
+| Developer Settings | Profile → Settings → Developer settings | Access OAuth app management        |
+| Create App         | OAuth Apps → New OAuth App              | Fill required fields               |
+| Callback URL       | Authorization callback URL field        | Set correctly for your environment |
+| Credentials        | App settings page                       | Copy Client ID and generate secret |
+| Update Settings    | OAuth Apps → Your app name              | Modify configuration as needed     |
 
 ---
 

@@ -52,15 +52,36 @@ AquaKit is the ultimate AI SaaS starter kit designed to dramatically accelerate 
 Key Features:
 
 - **🚀 Speed-First Development**: AI-powered coding with Claude Code + Cursor for 10x faster development
-- **🔐 Authentication Ready**: Better Auth with Convex integration - secure user management out of the box
+- **🔐 OAuth Authentication**: Multiple provider support with GitHub & Google sign-in out of the box
+- **👤 User Management**: Complete user profiles with avatar support and session handling
+- **🔑 Better Auth Integration**: Secure authentication with Convex backend integration
 - **⚡ Real-time Everything**: Convex provides instant data synchronization and serverless functions
 - **🤖 Background Jobs**: Trigger.dev for reliable AI processing, webhooks, and scheduled tasks
 - **💰 Monetization Built-in**: Polar.sh integration for subscriptions, payments, and customer management
-- **🎨 Beautiful UI**: TailwindCSS v4 with modern, responsive components
+- **🎨 Beautiful UI**: TailwindCSS v4 with modern, responsive components and improved login forms
 - **📱 Mobile-First**: Responsive design that works perfectly on all devices
 - **🔧 Type-Safe**: Full TypeScript support with strict type checking
 - **⚡ Lightning Fast**: Turbopack for ultra-fast development and builds
 - **🧠 AI-Ready**: Pre-configured patterns for integrating any AI model or API
+
+## ✨ Recent Updates (August 2025)
+
+### 🔐 Enhanced Authentication System
+- **OAuth Provider Integration**: Added GitHub and Google sign-in functionality with comprehensive setup guides
+- **User Avatar System**: Implemented dynamic avatar generation and external avatar URL support
+- **Improved Login UI**: Enhanced login form with password visibility toggle and OAuth provider buttons
+- **Session Management**: Robust session handling with loading states and error management
+
+### 🎨 UI/UX Improvements  
+- **Sidebar Navigation**: Added user sidebar with profile information and navigation
+- **Dashboard Integration**: Dedicated dashboard with improved user experience
+- **Theme Support**: Integrated theme provider with consistent styling
+- **Component Library**: Expanded UI components with Radix UI integration
+
+### 📚 Documentation & Setup
+- **OAuth Setup Guides**: Detailed step-by-step guides for GitHub and Google OAuth configuration
+- **Environment Configuration**: Comprehensive environment variable documentation with .env.example
+- **Developer Experience**: Improved development workflows and debugging capabilities
 
 <br>
 <h3 align="center">Built With</h3>
@@ -109,7 +130,22 @@ To run this project, you will need to add the following environment variables to
 ```bash
 NEXT_PUBLIC_CONVEX_URL="your-convex-deployment-url"
 CONVEX_SITE_URL="http://localhost:3000"
+
+# OAuth Provider Credentials (Optional)
+GITHUB_CLIENT_ID="your-github-client-id"
+GITHUB_CLIENT_SECRET="your-github-client-secret"
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret"
 ```
+
+#### OAuth Setup Guides
+
+For OAuth authentication setup, refer to our detailed guides:
+
+- **[GitHub OAuth Setup](./setup-github-oauth.md)** - Complete guide for setting up GitHub sign-in
+- **[Google OAuth Setup](./docs/setup-google-oauth.md)** - Complete guide for setting up Google sign-in
+
+Both guides include steps for configuring OAuth apps, setting up environment variables in both your local environment and Convex deployment.
 
 ### Installation
 
@@ -227,13 +263,20 @@ _Perfect for: Complete data control, enterprise deployments, privacy-focused org
 ### ✅ Core Stack (Completed)
 
 - [x] Next.js 15 with App Router setup
-- [x] Convex backend integration
+- [x] Convex backend integration  
 - [x] Better Auth authentication system
+- [x] OAuth provider integration (GitHub & Google)
+- [x] User profile and avatar system
+- [x] Enhanced login forms with social sign-in
+- [x] Sidebar navigation and dashboard
 - [x] TypeScript configuration
-- [x] TailwindCSS v4 styling
+- [x] TailwindCSS v4 styling with theme support
+- [x] Component library with Radix UI
 - [x] Development tooling (ESLint, Prettier)
 - [x] Claude Code integration guide
 - [x] Cursor IDE configuration
+- [x] Comprehensive OAuth setup documentation
+- [x] Environment configuration with .env.example
 
 ### 🚧 AI & Automation Features (In Progress)
 

@@ -109,6 +109,21 @@ export function LoginForm({
     }
   };
 
+  const handleDiscordSignIn = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      await authClient.signIn.social({
+        provider: "discord",
+        callbackURL: "/dashboard",
+      });
+    } catch (err) {
+      console.error('Discord sign in error:', err);
+      setError('Failed to sign in with Discord');
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card>
@@ -163,6 +178,8 @@ export function LoginForm({
                   variant="outline"
                   type="button"
                   className="w-full cursor-pointer"
+                  onClick={handleDiscordSignIn}
+                  disabled={isLoading}
                 >
                   <svg
                     className="h-4 w-4"
