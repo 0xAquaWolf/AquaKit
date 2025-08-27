@@ -14,11 +14,28 @@ export const createAuth = (ctx: GenericCtx) =>
     // All auth requests will be proxied through your next.js server
     baseURL: siteUrl,
     database: convexAdapter(ctx, betterAuthComponent),
-
+    socialProviders: {
+      github: {
+        clientId: process.env.GITHUB_CLIENT_ID as string,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+      },
+      google: {
+        clientId: process.env.GOOGLE_CLIENT_ID as string,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+        accessType: 'offline',
+        prompt: 'select_account+consent',
+      },
+    },
     // Simple non-verified email/password to get started
     emailAndPassword: {
       enabled: true,
-      requireEmailVerification: false,
+      requireEmailVerification: true,
+      // sendResetPassword: async ({ user, url }) => {
+      //   await sendResetPassword(requireMutationCtx(ctx), {
+      //     to: user.email,
+      //     url,
+      //   });
+      // },
     },
     plugins: [
       // The Convex plugin is required

@@ -3,7 +3,6 @@ import {
   BetterAuth,
   PublicAuthFunctions,
 } from '@convex-dev/better-auth';
-import { asyncMap } from 'convex-helpers';
 
 import { api, components, internal } from './_generated/api';
 import { DataModel, Id } from './_generated/dataModel';
@@ -37,13 +36,6 @@ export const {
   },
   onDeleteUser: async (ctx, userId) => {
     // Delete the user's data if the user is being deleted
-    const todos = await ctx.db
-      .query('todos')
-      .withIndex('userId', (q) => q.eq('userId', userId as Id<'users'>))
-      .collect();
-    await asyncMap(todos, async (todo) => {
-      await ctx.db.delete(todo._id);
-    });
     await ctx.db.delete(userId as Id<'users'>);
   },
   onUpdateUser: async (ctx, user) => {
