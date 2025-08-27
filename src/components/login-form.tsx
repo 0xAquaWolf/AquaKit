@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -18,6 +19,7 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<'div'>) {
+  const router = useRouter();
   const [showSignIn, setShowSignIn] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -37,6 +39,9 @@ export function LoginForm({
             password: formData.get('password') as string,
           },
           {
+            onSuccess: () => {
+              router.push('/dashboard');
+            },
             onError: (ctx) => {
               console.error('Sign in error:', ctx);
               setError(ctx.error.message || 'Failed to sign in');
@@ -51,6 +56,9 @@ export function LoginForm({
             password: formData.get('password') as string,
           },
           {
+            onSuccess: () => {
+              router.push('/dashboard');
+            },
             onError: (ctx) => {
               console.error('Sign up error:', ctx);
               setError(ctx.error.message || 'Failed to sign up');

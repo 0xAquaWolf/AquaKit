@@ -1,5 +1,5 @@
-import { LoginForm } from "@/components/login-form"
-import { Navigation } from "@/components/navigation"
+import { LoginForm } from '@/components/login-form';
+import { Navigation } from '@/components/navigation';
 
 export default function Page() {
   return (
@@ -11,5 +11,5 @@ export default function Page() {
         </div>
       </div>
     </div>
-  )
+  );
 }
