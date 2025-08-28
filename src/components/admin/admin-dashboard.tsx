@@ -8,13 +8,6 @@ import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
@@ -107,27 +100,29 @@ export function AdminDashboard() {
       <div className="container mx-auto p-6">
         <div className="max-w-6xl mx-auto space-y-6">
           {/* Header */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-3xl flex items-center gap-2">
+          <div className="rounded-xl border bg-card text-card-foreground shadow">
+            <div className="flex flex-col space-y-1.5 p-6">
+              <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
                 🔧 Admin Dashboard
-              </CardTitle>
-              <CardDescription>
+              </h1>
+              <p className="text-muted-foreground">
                 Manage users, debug account linking, and configure admin
                 settings
-              </CardDescription>
-            </CardHeader>
-          </Card>
+              </p>
+            </div>
+          </div>
 
           {/* Admin Management */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Admin Management</CardTitle>
-              <CardDescription>
+          <div className="rounded-xl border bg-card text-card-foreground shadow">
+            <div className="flex flex-col space-y-1.5 p-6">
+              <h2 className="text-xl font-semibold tracking-tight">
+                Admin Management
+              </h2>
+              <p className="text-sm text-muted-foreground">
                 Manage admin users and initialize admin roles
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
+              </p>
+            </div>
+            <div className="p-6 pt-0 space-y-4">
               <div>
                 <h3 className="text-lg font-semibold mb-3">
                   Current Admin Users
@@ -181,18 +176,20 @@ export function AdminDashboard() {
                   )}
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Debug Tools */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Debug Tools</CardTitle>
-              <CardDescription>
+          <div className="rounded-xl border bg-card text-card-foreground shadow">
+            <div className="flex flex-col space-y-1.5 p-6">
+              <h2 className="text-xl font-semibold tracking-tight">
+                Debug Tools
+              </h2>
+              <p className="text-sm text-muted-foreground">
                 Tools for debugging and testing account functionality
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
+              </p>
+            </div>
+            <div className="p-6 pt-0 space-y-6">
               {/* Quick Links */}
               <div>
                 <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
@@ -238,8 +235,8 @@ export function AdminDashboard() {
                 </div>
 
                 {emailSearch && (
-                  <Card>
-                    <CardContent className="pt-4">
+                  <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+                    <div className="p-4">
                       <div className="space-y-3">
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-medium">
@@ -326,8 +323,8 @@ export function AdminDashboard() {
                           </div>
                         )}
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 )}
               </div>
 
@@ -339,8 +336,8 @@ export function AdminDashboard() {
                   All Users Summary
                 </h3>
                 {userAccounts ? (
-                  <Card>
-                    <CardContent className="pt-4">
+                  <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+                    <div className="p-4">
                       <div className="space-y-3">
                         <div className="flex items-center gap-2">
                           <span className="font-medium">Total Users:</span>
@@ -369,31 +366,33 @@ export function AdminDashboard() {
                           </div>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 ) : (
-                  <Card>
-                    <CardContent className="pt-4">
+                  <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+                    <div className="p-4">
                       <p className="text-muted-foreground">
                         Loading user data...
                       </p>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 )}
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Danger Zone */}
-          <Card className="border-red-200 bg-red-50/50">
-            <CardHeader>
-              <CardTitle className="text-red-700">🚨 Danger Zone</CardTitle>
-              <CardDescription className="text-red-600">
+          <div className="rounded-xl border border-red-200 bg-red-50/50 text-card-foreground shadow">
+            <div className="flex flex-col space-y-1.5 p-6">
+              <h2 className="text-xl font-semibold tracking-tight text-red-700 flex items-center gap-2">
+                🚨 Danger Zone
+              </h2>
+              <p className="text-sm text-red-600">
                 These actions can cause permanent data loss. Use with extreme
                 caution.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
+            </div>
+            <div className="p-6 pt-0">
               <div className="space-y-3">
                 <p className="text-sm text-red-700">
                   ⚠️ <span className="font-semibold">Warning:</span> The button
@@ -414,20 +413,20 @@ export function AdminDashboard() {
                   )}
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
 
           {/* Setup Instructions */}
-          <Card className="border-blue-200 bg-blue-50/50">
-            <CardHeader>
-              <CardTitle className="text-lg">
+          <div className="rounded-xl border border-blue-200 bg-blue-50/50 text-card-foreground shadow">
+            <div className="flex flex-col space-y-1.5 p-6">
+              <h2 className="text-lg font-semibold tracking-tight flex items-center gap-2">
                 📚 Admin Setup Instructions
-              </CardTitle>
-              <CardDescription>
+              </h2>
+              <p className="text-sm text-muted-foreground">
                 How to configure admin access for your team
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
+            </div>
+            <div className="p-6 pt-0">
               <div className="space-y-4 text-sm">
                 <div>
                   <h4 className="font-semibold mb-2">1. Set Admin Emails</h4>
@@ -456,8 +455,8 @@ export function AdminDashboard() {
                   </p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
     </div>

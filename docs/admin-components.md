@@ -12,6 +12,14 @@ The `AdminGuard` component provides authentication and admin role verification f
 
 The `AdminPageLayout` component provides a consistent layout for admin pages with built-in AdminGuard protection.
 
+### AdminDashboardSkeleton
+
+The `AdminDashboardSkeleton` component provides a loading skeleton that matches the exact layout of the admin dashboard, preventing UI flashing during admin status verification.
+
+### DebugPageSkeleton
+
+The `DebugPageSkeleton` component provides a loading skeleton for debug pages with matching layout structure.
+
 ## Usage Examples
 
 ### Option 1: Using AdminGuard (Flexible Layout)

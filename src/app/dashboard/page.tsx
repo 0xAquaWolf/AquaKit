@@ -8,7 +8,6 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { AppSidebar } from '@/components/app-sidebar';
 import { DashboardSkeleton } from '@/components/dashboard-skeleton';
-import { UserDebug } from '@/components/debug/user-debug';
 import { Separator } from '@/components/ui/separator';
 import {
   SidebarInset,
@@ -68,7 +67,6 @@ function DashboardContent() {
 
   return (
     <SidebarProvider>
-      <UserDebug />
       <AppSidebar />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2">
