@@ -2,9 +2,10 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Github, Star } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 type StarsResponse = {
   stars: number;
@@ -46,19 +47,32 @@ export function GithubStar() {
     };
   }, []);
 
-  const label = useMemo(() => (stars != null ? formatCompact(stars) : 'Star'), [stars]);
+  const label = useMemo(() => (stars != null ? formatCompact(stars) : null), [stars]);
 
   return (
-    <Button asChild variant="outline" size="sm">
-      <Link href={repoUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub repository">
-        <Github className="opacity-80" />
-        <span className="hidden sm:inline">Star</span>
-        <Star className="fill-yellow-400 stroke-yellow-500" />
-        <span className="tabular-nums" aria-live="polite">
-          {label}
-        </span>
-      </Link>
-    </Button>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button asChild variant="ghost" size="sm" className="h-8 px-2">
+          <Link
+            href={repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Star AquaKit on GitHub"
+            className="group inline-flex items-center gap-1.5"
+          >
+            <Github className="size-4 opacity-80 transition-opacity group-hover:opacity-100" />
+            {label && (
+              <span
+                className="tabular-nums text-xs text-muted-foreground rounded-full border px-1.5 py-0.5 leading-none"
+                aria-live="polite"
+              >
+                {label}
+              </span>
+            )}
+          </Link>
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>Star AquaKit on GitHub</TooltipContent>
+    </Tooltip>
   );
 }
-
