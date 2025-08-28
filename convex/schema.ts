@@ -15,5 +15,8 @@ export default defineSchema({
         v.literal('discord')
       )
     ),
-  }).index('email', ['email']),
+    role: v.optional(v.union(v.literal('admin'), v.literal('user'))),
+  })
+    .index('email', ['email'])
+    .index('role', ['role']),
 });

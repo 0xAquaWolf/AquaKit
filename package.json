@@ -18,8 +18,8 @@
     "env:list": "npx convex env list",
     "env:list:dev": "npx convex env list --dev",
     "deploy:prod": "npx convex deploy",
-    "clear:dev-users": "node scripts/clear-dev-users.js",
-    "debug:accounts": "node scripts/debug-accounts.js"
+    "debug:accounts": "node scripts/debug-accounts.js",
+    "set-admin": "node scripts/setup-admin.js"
   },
   "dependencies": {
     "@convex-dev/better-auth": "^0.7.15",

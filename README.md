@@ -63,6 +63,7 @@ Key Features:
 - **🔧 Type-Safe**: Full TypeScript support with strict type checking
 - **⚡ Lightning Fast**: Turbopack for ultra-fast development and builds
 - **🧠 AI-Ready**: Pre-configured patterns for integrating any AI model or API
+- **👤 Admin System**: Role-based access control with debug tools and user management
 
 ## ✨ Recent Updates (August 2025)
 
@@ -85,6 +86,7 @@ Key Features:
 - **OAuth Setup Guides**: Detailed step-by-step guides for GitHub, Google, and Discord OAuth configuration
 - **Environment Configuration**: Comprehensive environment variable documentation with .env.example
 - **Developer Experience**: Improved development workflows and debugging capabilities
+- **Admin System**: Role-based access control with comprehensive admin dashboard and debug tools
 
 <br>
 <h3 align="center">Built With</h3>
@@ -158,6 +160,19 @@ All guides include step-by-step instructions for:
 - Setting up environment variables in both your local environment and Convex deployment
 - Security best practices and troubleshooting tips
 
+#### Admin System Setup
+
+For setting up admin users and accessing debug tools:
+
+- **[Admin Setup Guide](./docs/admin-setup.md)** - Complete guide for configuring admin users and role-based access
+
+The admin system provides:
+
+- Role-based access control with environment variable configuration
+- Admin dashboard with user management and debug tools
+- Account linking diagnostics and testing utilities
+- Development-safe database operations and user role management
+
 ### Installation
 
 1. Clone the repo
@@ -193,6 +208,21 @@ Each guide provides:
 - ✅ Environment variable configuration (local & Convex)
 - ✅ Security best practices
 - ✅ Troubleshooting tips
+
+### Admin System Documentation
+
+| Feature            | Setup Guide                                    | Purpose                                                      |
+| ------------------ | ---------------------------------------------- | ------------------------------------------------------------ |
+| 🔧 **Admin Panel** | **[Admin Setup Guide](./docs/admin-setup.md)** | Configure admin users, access debug tools, manage user roles |
+
+The admin system includes:
+
+- ✅ Environment variable-based admin configuration
+- ✅ Role-based access control with automatic initialization
+- ✅ Comprehensive admin dashboard with user management
+- ✅ Debug tools for account linking and authentication testing
+- ✅ Development-safe database operations and cleanup utilities
+- ✅ Reusable AdminGuard and AdminPageLayout components for protecting content
 
 ### Quick Setup Commands
 
@@ -321,6 +351,7 @@ _Perfect for: Complete data control, enterprise deployments, privacy-focused org
 - [x] Cursor IDE configuration
 - [x] Comprehensive OAuth setup documentation (GitHub, Google, Discord)
 - [x] Environment configuration with .env.example
+- [x] Admin system with role-based access control and debug tools
 
 ### 🚧 AI & Automation Features (In Progress)
 
