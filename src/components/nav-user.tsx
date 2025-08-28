@@ -5,6 +5,7 @@ import {
   IconDotsVertical,
   IconLogout,
   IconNotification,
+  IconSettings,
   IconUserCircle,
 } from '@tabler/icons-react';
 
@@ -30,6 +31,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar';
+import { useIsAdmin } from '@/hooks/use-admin';
 import { authClient } from '@/lib/auth-client';
 
 interface NavUserProps {
@@ -61,10 +63,15 @@ function getInitials(name?: string | null, email?: string | null): string {
 export function NavUser({ user }: NavUserProps) {
   const { isMobile } = useSidebar();
   const router = useRouter();
+  const isAdmin = useIsAdmin();
 
   const handleLogout = async () => {
     await authClient.signOut();
     router.push('/login');
+  };
+
+  const handleAdminClick = () => {
+    router.push('/admin');
   };
 
   const initials = getInitials(user.name, user.email);
@@ -141,6 +148,12 @@ export function NavUser({ user }: NavUserProps) {
                 <IconNotification />
                 Notifications
               </DropdownMenuItem>
+              {isAdmin && (
+                <DropdownMenuItem onClick={handleAdminClick}>
+                  <IconSettings />
+                  Admin Panel
+                </DropdownMenuItem>
+              )}
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>
