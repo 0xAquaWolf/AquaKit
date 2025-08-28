@@ -2,14 +2,16 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Button } from '@/components/ui/button';
+
 import { ModeToggle } from '@/components/ThemeToggleButton';
+import { Button } from '@/components/ui/button';
 
 export function Navigation() {
   const pathname = usePathname();
-  
+
   // Hide login button on auth pages (login, signup, etc.)
-  const isAuthPage = pathname?.startsWith('/login') || pathname?.startsWith('/signup');
+  const isAuthPage =
+    pathname?.startsWith('/login') || pathname?.startsWith('/signup');
 
   return (
     <nav className="flex items-center justify-between px-6 py-4 border-b">
@@ -20,9 +22,7 @@ export function Navigation() {
         <ModeToggle />
         {!isAuthPage && (
           <Button asChild>
-            <Link href="/login">
-              Login
-            </Link>
+            <Link href="/login">Login</Link>
           </Button>
         )}
       </div>

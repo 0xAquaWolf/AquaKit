@@ -1,21 +1,22 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import Image from "next/image";
+import Image from 'next/image';
+
+import { cn } from '@/lib/utils';
 
 interface AvatarProps {
   avatarUrl?: string | null;
   name?: string | null;
   email: string;
-  size?: "sm" | "md" | "lg";
+  size?: 'sm' | 'md' | 'lg';
   className?: string;
   avatarColor?: string;
 }
 
 const sizeMap = {
-  sm: "w-8 h-8 text-xs",
-  md: "w-10 h-10 text-sm", 
-  lg: "w-12 h-12 text-base",
+  sm: 'w-8 h-8 text-xs',
+  md: 'w-10 h-10 text-sm',
+  lg: 'w-12 h-12 text-base',
 };
 
 function getInitials(name?: string | null, email?: string): string {
@@ -26,22 +27,22 @@ function getInitials(name?: string | null, email?: string): string {
     }
     return parts[0].slice(0, 2).toUpperCase();
   }
-  
+
   if (email) {
     const emailPart = email.split('@')[0];
     return emailPart.slice(0, 2).toUpperCase();
   }
-  
-  return "??";
+
+  return '??';
 }
 
-export function Avatar({ 
-  avatarUrl, 
-  name, 
-  email, 
-  size = "md", 
+export function Avatar({
+  avatarUrl,
+  name,
+  email,
+  size = 'md',
   className,
-  avatarColor = "#4ECDC4"
+  avatarColor = '#4ECDC4',
 }: AvatarProps) {
   const initials = getInitials(name, email);
   const sizeClasses = sizeMap[size];
@@ -53,11 +54,7 @@ export function Avatar({
         alt={name || email}
         width={48}
         height={48}
-        className={cn(
-          "rounded-full object-cover",
-          sizeClasses,
-          className
-        )}
+        className={cn('rounded-full object-cover', sizeClasses, className)}
       />
     );
   }
@@ -65,7 +62,7 @@ export function Avatar({
   return (
     <div
       className={cn(
-        "rounded-full flex items-center justify-center font-semibold text-white",
+        'rounded-full flex items-center justify-center font-semibold text-white',
         sizeClasses,
         className
       )}

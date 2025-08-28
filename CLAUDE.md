@@ -19,18 +19,21 @@ This is a Next.js 15 application with App Router that integrates Convex for back
 ### Key Architecture Components
 
 **Authentication Stack:**
+
 - Better Auth with Convex integration (`@convex-dev/better-auth`)
 - Auth client configured in `src/lib/auth-client.ts`
 - Authentication routes in `src/app/api/auth/[...all]/route.ts`
 - Convex auth configuration in `convex/auth.config.ts`
 
 **Convex Integration:**
+
 - Convex backend with Better Auth plugin in `convex/convex.config.ts`
 - Client provider wraps the app in `src/app/ConvexClientProvider.tsx`
 - Schema definitions in `convex/schema.ts`
 - HTTP endpoints in `convex/http.ts`
 
 **Frontend Structure:**
+
 - Next.js App Router with TypeScript
 - Tailwind CSS for styling with custom configuration
 - UI components in `src/components/ui/`
@@ -39,6 +42,7 @@ This is a Next.js 15 application with App Router that integrates Convex for back
 ### Environment Setup
 
 The application requires:
+
 - `NEXT_PUBLIC_CONVEX_URL` - Convex deployment URL
 - `CONVEX_SITE_URL` - Used in auth configuration
 

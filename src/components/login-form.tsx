@@ -1,5 +1,6 @@
 'use client';
 
+import { useMutation } from 'convex/react';
 import { Eye, EyeOff } from 'lucide-react';
 
 import { useState } from 'react';
@@ -16,6 +17,7 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { api } from '@/convex/_generated/api';
 import { authClient } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 
@@ -28,6 +30,7 @@ export function LoginForm({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
+  const updateAuthMethod = useMutation(api.auth.updateLastAuthMethod);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,7 +47,12 @@ export function LoginForm({
             password: formData.get('password') as string,
           },
           {
-            onSuccess: () => {
+            onSuccess: async () => {
+              try {
+                await updateAuthMethod({ authMethod: 'email' });
+              } catch (err) {
+                console.warn('Failed to update auth method:', err);
+              }
               router.push('/dashboard');
             },
             onError: (ctx) => {
@@ -61,7 +69,12 @@ export function LoginForm({
             password: formData.get('password') as string,
           },
           {
-            onSuccess: () => {
+            onSuccess: async () => {
+              try {
+                await updateAuthMethod({ authMethod: 'email' });
+              } catch (err) {
+                console.warn('Failed to update auth method:', err);
+              }
               router.push('/dashboard');
             },
             onError: (ctx) => {
@@ -84,8 +97,8 @@ export function LoginForm({
       setIsLoading(true);
       setError(null);
       await authClient.signIn.social({
-        provider: "google",
-        callbackURL: "/dashboard",
+        provider: 'google',
+        callbackURL: '/dashboard?authMethod=google',
       });
     } catch (err) {
       console.error('Google sign in error:', err);
@@ -99,8 +112,8 @@ export function LoginForm({
       setIsLoading(true);
       setError(null);
       await authClient.signIn.social({
-        provider: "github",
-        callbackURL: "/dashboard",
+        provider: 'github',
+        callbackURL: '/dashboard?authMethod=github',
       });
     } catch (err) {
       console.error('GitHub sign in error:', err);
@@ -114,8 +127,8 @@ export function LoginForm({
       setIsLoading(true);
       setError(null);
       await authClient.signIn.social({
-        provider: "discord",
-        callbackURL: "/dashboard",
+        provider: 'discord',
+        callbackURL: '/dashboard?authMethod=discord',
       });
     } catch (err) {
       console.error('Discord sign in error:', err);

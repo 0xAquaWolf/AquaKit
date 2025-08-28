@@ -1,12 +1,11 @@
-"use client";
+'use client';
 
-import { Calendar, Home, Inbox, Search, Settings, LogOut } from "lucide-react";
-import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
-import { Avatar } from "@/components/ui/avatar";
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { useQuery } from 'convex/react';
+import { Calendar, Home, Inbox, LogOut, Search, Settings } from 'lucide-react';
 
+import { useRouter } from 'next/navigation';
+
+import { Avatar } from '@/components/ui/avatar';
 import {
   Sidebar,
   SidebarContent,
@@ -18,32 +17,34 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
+} from '@/components/ui/sidebar';
+import { api } from '@/convex/_generated/api';
+import { authClient } from '@/lib/auth-client';
 
 const items = [
   {
-    title: "Home",
-    url: "/dashboard",
+    title: 'Home',
+    url: '/dashboard',
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
+    title: 'Inbox',
+    url: '#',
     icon: Inbox,
   },
   {
-    title: "Calendar",
-    url: "#",
+    title: 'Calendar',
+    url: '#',
     icon: Calendar,
   },
   {
-    title: "Search",
-    url: "#",
+    title: 'Search',
+    url: '#',
     icon: Search,
   },
   {
-    title: "Settings",
-    url: "#",
+    title: 'Settings',
+    url: '#',
     icon: Settings,
   },
 ];
@@ -55,7 +56,7 @@ export function AppSidebar() {
 
   const handleLogout = async () => {
     await authClient.signOut();
-    router.push("/login");
+    router.push('/login');
   };
 
   return (
@@ -89,13 +90,13 @@ export function AppSidebar() {
               <Avatar
                 avatarUrl={currentUser?.avatarUrl}
                 name={currentUser?.name}
-                email={currentUser?.email || session?.user?.email || ""}
+                email={currentUser?.email || session?.user?.email || ''}
                 avatarColor={currentUser?.avatarColor}
                 size="sm"
               />
               <div className="flex flex-col min-w-0">
                 <div className="text-sm font-medium truncate">
-                  {currentUser?.name || "User"}
+                  {currentUser?.name || 'User'}
                 </div>
                 <div className="text-xs text-muted-foreground truncate">
                   {currentUser?.email || session?.user?.email}

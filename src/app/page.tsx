@@ -1,12 +1,10 @@
 'use client';
 
+import { AuthLoading, Authenticated, Unauthenticated } from 'convex/react';
+
 import { useEffect } from 'react';
+
 import { useRouter } from 'next/navigation';
-import {
-  AuthLoading,
-  Authenticated,
-  Unauthenticated,
-} from 'convex/react';
 
 import { Navigation } from '@/components/navigation';
 import { TechnologyCards } from '@/components/technology-cards';
@@ -51,7 +49,7 @@ export default function App() {
 
 function RedirectToDashboard() {
   const router = useRouter();
-  
+
   useEffect(() => {
     router.push('/dashboard');
   }, [router]);

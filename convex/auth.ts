@@ -3,11 +3,11 @@ import {
   BetterAuth,
   PublicAuthFunctions,
 } from '@convex-dev/better-auth';
+import { v } from 'convex/values';
 
 import { api, components, internal } from './_generated/api';
 import { DataModel, Id } from './_generated/dataModel';
-import { query, mutation } from './_generated/server';
-import { v } from 'convex/values';
+import { mutation, query } from './_generated/server';
 
 const authFunctions: AuthFunctions = internal.auth;
 const publicAuthFunctions: PublicAuthFunctions = api.auth;
@@ -28,8 +28,16 @@ export const {
   onCreateUser: async (ctx, user) => {
     // Generate a random color for users without an image
     const colors = [
-      '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
-      '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9'
+      '#FF6B6B',
+      '#4ECDC4',
+      '#45B7D1',
+      '#96CEB4',
+      '#FFEAA7',
+      '#DDA0DD',
+      '#98D8C8',
+      '#F7DC6F',
+      '#BB8FCE',
+      '#85C1E9',
     ];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
@@ -57,14 +65,14 @@ export const {
     // Keep the user's data synced
     const userId = user.userId as Id<'users'>;
     const currentUser = await ctx.db.get(userId);
-    
+
     await ctx.db.patch(userId, {
       email: user.email,
       name: user.name || undefined,
     });
 
     // If user has a new image from social provider, store it asynchronously
-    if (user.image && (!currentUser?.avatarStorageId)) {
+    if (user.image && !currentUser?.avatarStorageId) {
       ctx.scheduler.runAfter(0, api.avatars.storeAvatarFromUrl, {
         imageUrl: user.image,
         userId,
@@ -82,19 +90,19 @@ export const getCurrentUser = query({
     if (!userMetadata) {
       return null;
     }
-    
+
     // Get user data from database
     const user = await ctx.db.get(userMetadata.userId as Id<'users'>);
     if (!user) {
       return null;
     }
-    
+
     // Get avatar URL if storage ID exists
     let avatarUrl = null;
     if (user.avatarStorageId) {
       avatarUrl = await ctx.storage.getUrl(user.avatarStorageId);
     }
-    
+
     return {
       ...user,
       ...userMetadata,
@@ -106,12 +114,36 @@ export const getCurrentUser = query({
 // Internal mutation to update user avatar storage ID
 export const updateUserAvatarInternal = mutation({
   args: {
-    userId: v.id("users"),
-    avatarStorageId: v.id("_storage"),
+    userId: v.id('users'),
+    avatarStorageId: v.id('_storage'),
   },
   handler: async (ctx, args) => {
     await ctx.db.patch(args.userId, {
       avatarStorageId: args.avatarStorageId,
+    });
+  },
+});
+
+// Mutation to update user's last authentication method
+export const updateLastAuthMethod = mutation({
+  args: {
+    authMethod: v.union(
+      v.literal('email'),
+      v.literal('google'),
+      v.literal('github'),
+      v.literal('discord')
+    ),
+  },
+  handler: async (ctx, args) => {
+    // Get current authenticated user
+    const userMetadata = await betterAuthComponent.getAuthUser(ctx);
+    if (!userMetadata) {
+      throw new Error('User not authenticated');
+    }
+
+    // Update the user's last auth method
+    await ctx.db.patch(userMetadata.userId as Id<'users'>, {
+      lastAuthMethod: args.authMethod,
     });
   },
 });
