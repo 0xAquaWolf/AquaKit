@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { Github } from 'lucide-react';
+import { Github, Star } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
@@ -52,7 +52,7 @@ export function GithubStar() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button asChild variant="ghost" size="sm" className="h-8 px-2">
+        <Button asChild variant="outline" size="sm" className="h-8 px-2">
           <Link
             href={repoUrl}
             target="_blank"
@@ -63,16 +63,29 @@ export function GithubStar() {
             <Github className="size-4 opacity-80 transition-opacity group-hover:opacity-100" />
             {label && (
               <span
-                className="tabular-nums text-xs text-muted-foreground rounded-full border px-1.5 py-0.5 leading-none"
+                className="tabular-nums text-xs text-foreground/80 rounded-sm px-1.5 py-0.5 leading-none"
                 aria-live="polite"
               >
                 {label}
               </span>
             )}
+            <Star className="size-4 opacity-80" />
           </Link>
         </Button>
       </TooltipTrigger>
       <TooltipContent>Star AquaKit on GitHub</TooltipContent>
     </Tooltip>
+  );
+}
+
+export function GithubStarSkeleton() {
+  return (
+    <Button variant="outline" size="sm" className="h-8 px-2" disabled>
+      <div className="inline-flex items-center gap-1.5">
+        <Github className="size-4 opacity-50" />
+        <span className="h-3 w-8 rounded bg-muted" />
+        <Star className="size-4 opacity-50" />
+      </div>
+    </Button>
   );
 }

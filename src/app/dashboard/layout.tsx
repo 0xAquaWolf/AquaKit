@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useMutation, useQuery } from 'convex/react';
 
 import { AppSidebar } from '@/components/app-sidebar';
-import { GithubStar } from '@/components/github-star';
+import { GithubStar, GithubStarSkeleton } from '@/components/github-star';
 import { DashboardSkeleton } from '@/components/dashboard-skeleton';
 import { Separator } from '@/components/ui/separator';
 import {
@@ -73,7 +73,9 @@ function DashboardLayoutInner({ children }: PropsWithChildren) {
             <h1 className="text-xl font-semibold">Dashboard</h1>
           </div>
           <div className="px-4">
-            <GithubStar />
+            <Suspense fallback={<GithubStarSkeleton />}>
+              <GithubStar />
+            </Suspense>
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</div>
