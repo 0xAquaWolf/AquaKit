@@ -1,11 +1,9 @@
 'use client';
 
 import { useQuery } from 'convex/react';
-import { Calendar, Home, Inbox, LogOut, Search, Settings } from 'lucide-react';
+import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react';
 
-import { useRouter } from 'next/navigation';
-
-import { Avatar } from '@/components/ui/avatar';
+import { NavUser } from '@/components/nav-user';
 import {
   Sidebar,
   SidebarContent,
@@ -50,14 +48,8 @@ const items = [
 ];
 
 export function AppSidebar() {
-  const router = useRouter();
   const { data: session } = authClient.useSession();
   const currentUser = useQuery(api.auth.getCurrentUser);
-
-  const handleLogout = async () => {
-    await authClient.signOut();
-    router.push('/login');
-  };
 
   return (
     <Sidebar>
@@ -84,46 +76,30 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <div className="px-2 py-2">
-              {!currentUser ? (
-                <Avatar
-                  avatarUrl=""
-                  name=""
-                  email=""
-                  size="sm"
-                  isLoading={true}
-                  showFullSkeleton={true}
-                />
-              ) : (
+        {currentUser ? (
+          <NavUser
+            user={{
+              name: currentUser.name,
+              email: currentUser.email || session?.user?.email,
+              avatarUrl: currentUser.avatarUrl,
+              avatarColor: currentUser.avatarColor,
+            }}
+          />
+        ) : (
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <div className="px-2 py-2">
                 <div className="flex items-center gap-3">
-                  <Avatar
-                    avatarUrl={currentUser.avatarUrl}
-                    name={currentUser.name}
-                    email={currentUser.email || session?.user?.email || ''}
-                    avatarColor={currentUser.avatarColor}
-                    size="sm"
-                  />
-                  <div className="flex flex-col min-w-0">
-                    <div className="text-sm font-medium truncate">
-                      {currentUser.name || 'User'}
-                    </div>
-                    <div className="text-xs text-muted-foreground truncate">
-                      {currentUser.email || session?.user?.email}
-                    </div>
+                  <div className="w-8 h-8 rounded-lg bg-muted animate-pulse" />
+                  <div className="flex flex-col min-w-0 gap-1">
+                    <div className="h-4 w-20 bg-muted animate-pulse rounded" />
+                    <div className="h-3 w-24 bg-muted animate-pulse rounded" />
                   </div>
                 </div>
-              )}
-            </div>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton onClick={handleLogout}>
-              <LogOut />
-              <span>Sign Out</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+              </div>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        )}
       </SidebarFooter>
     </Sidebar>
   );

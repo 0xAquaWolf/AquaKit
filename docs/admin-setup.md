@@ -87,6 +87,7 @@ Admin users get access to:
 
 ### Debug Tools
 
+- OAuth provider linking (Google, GitHub, Discord)
 - Account linking diagnostics
 - Email search and duplicate detection
 - User creation and deletion tracking

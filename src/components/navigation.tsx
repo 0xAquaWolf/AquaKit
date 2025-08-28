@@ -10,7 +10,7 @@ import { authClient } from '@/lib/auth-client';
 
 export function Navigation() {
   const pathname = usePathname();
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
   const isAdmin = useIsAdmin();
 
   // Hide login button on auth pages (login, signup, etc.)
@@ -23,14 +23,14 @@ export function Navigation() {
         AquaKit
       </Link>
       <div className="flex items-center gap-2">
-        {/* Admin debug link - only visible to admins */}
-        {session && isAdmin && (
+        {/* Admin debug link - only visible to confirmed admins */}
+        {session && isAdmin === true && (
           <Button variant="outline" size="sm" asChild>
             <Link href="/admin">🔧 Admin</Link>
           </Button>
         )}
         <ModeToggle />
-        {!isAuthPage && !session && (
+        {!isAuthPage && !isPending && !session && (
           <Button asChild>
             <Link href="/login">Login</Link>
           </Button>
