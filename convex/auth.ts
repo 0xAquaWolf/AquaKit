@@ -214,27 +214,33 @@ export const isCurrentUserAdmin = query({
   args: {},
   returns: v.boolean(),
   handler: async (ctx) => {
-    // Get user data from Better Auth
-    const userMetadata = await betterAuthComponent.getAuthUser(ctx);
-    if (!userMetadata) {
+    try {
+      // Get user data from Better Auth
+      const userMetadata = await betterAuthComponent.getAuthUser(ctx);
+      if (!userMetadata) {
+        return false;
+      }
+
+      // Get user data from database
+      const user = await ctx.db.get(userMetadata.userId as Id<'users'>);
+      if (!user) {
+        return false;
+      }
+
+      // Check if user is admin or if their email is in the admin list
+      if (user.role === 'admin') {
+        return true;
+      }
+
+      // Check environment variable for admin emails
+      const adminEmails =
+        process.env.ADMIN_EMAILS?.split(',').map((email) => email.trim()) || [];
+      return adminEmails.includes(user.email);
+    } catch (err) {
+      console.error('isCurrentUserAdmin error:', err);
+      // Never surface server errors to the client for this check
       return false;
     }
-
-    // Get user data from database
-    const user = await ctx.db.get(userMetadata.userId as Id<'users'>);
-    if (!user) {
-      return false;
-    }
-
-    // Check if user is admin or if their email is in the admin list
-    if (user.role === 'admin') {
-      return true;
-    }
-
-    // Check environment variable for admin emails
-    const adminEmails =
-      process.env.ADMIN_EMAILS?.split(',').map((email) => email.trim()) || [];
-    return adminEmails.includes(user.email);
   },
 });
 
