@@ -86,22 +86,35 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <div className="flex items-center gap-3 px-2 py-2">
-              <Avatar
-                avatarUrl={currentUser?.avatarUrl}
-                name={currentUser?.name}
-                email={currentUser?.email || session?.user?.email || ''}
-                avatarColor={currentUser?.avatarColor}
-                size="sm"
-              />
-              <div className="flex flex-col min-w-0">
-                <div className="text-sm font-medium truncate">
-                  {currentUser?.name || 'User'}
+            <div className="px-2 py-2">
+              {!currentUser ? (
+                <Avatar
+                  avatarUrl=""
+                  name=""
+                  email=""
+                  size="sm"
+                  isLoading={true}
+                  showFullSkeleton={true}
+                />
+              ) : (
+                <div className="flex items-center gap-3">
+                  <Avatar
+                    avatarUrl={currentUser.avatarUrl}
+                    name={currentUser.name}
+                    email={currentUser.email || session?.user?.email || ''}
+                    avatarColor={currentUser.avatarColor}
+                    size="sm"
+                  />
+                  <div className="flex flex-col min-w-0">
+                    <div className="text-sm font-medium truncate">
+                      {currentUser.name || 'User'}
+                    </div>
+                    <div className="text-xs text-muted-foreground truncate">
+                      {currentUser.email || session?.user?.email}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-xs text-muted-foreground truncate">
-                  {currentUser?.email || session?.user?.email}
-                </div>
-              </div>
+              )}
             </div>
           </SidebarMenuItem>
           <SidebarMenuItem>

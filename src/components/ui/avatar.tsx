@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
 
+import { Skeleton } from './skeleton';
+
 interface AvatarProps {
   avatarUrl?: string | null;
   name?: string | null;
@@ -11,6 +13,8 @@ interface AvatarProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   avatarColor?: string;
+  isLoading?: boolean;
+  showFullSkeleton?: boolean;
 }
 
 const sizeMap = {
@@ -43,9 +47,27 @@ export function Avatar({
   size = 'md',
   className,
   avatarColor = '#4ECDC4',
+  isLoading = false,
+  showFullSkeleton = false,
 }: AvatarProps) {
   const initials = getInitials(name, email);
   const sizeClasses = sizeMap[size];
+
+  if (isLoading && showFullSkeleton) {
+    return (
+      <div className="flex items-center gap-3">
+        <Skeleton className={cn('rounded-full', sizeClasses)} />
+        <div className="flex flex-col gap-1 min-w-0">
+          <Skeleton className="h-4 w-20" />
+          <Skeleton className="h-3 w-24" />
+        </div>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return <Skeleton className={cn('rounded-full', sizeClasses, className)} />;
+  }
 
   if (avatarUrl) {
     return (

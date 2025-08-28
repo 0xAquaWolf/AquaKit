@@ -156,3 +156,92 @@ export const updateLastAuthMethod = mutation({
     });
   },
 });
+
+// Debug query to inspect user accounts and linked providers
+export const debugUserAccounts = query({
+  args: {},
+  handler: async (ctx) => {
+    // Get all users from our database
+    const users = await ctx.db.query('users').collect();
+    
+    // Get current auth user if available
+    const currentAuthUser = await betterAuthComponent.getAuthUser(ctx);
+    
+    return {
+      totalUsers: users.length,
+      users: users.map(user => ({
+        id: user._id,
+        email: user.email,
+        name: user.name,
+        lastAuthMethod: user.lastAuthMethod,
+      })),
+      currentUser: currentAuthUser ? {
+        userId: currentAuthUser.userId,
+        email: currentAuthUser.email,
+      } : null,
+    };
+  },
+});
+
+// Debug query to find users by email (to check for duplicates)
+export const debugFindUsersByEmail = query({
+  args: {
+    email: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const users = await ctx.db
+      .query('users')
+      .withIndex('email', (q) => q.eq('email', args.email))
+      .collect();
+    
+    return {
+      email: args.email,
+      userCount: users.length,
+      users: users.map(user => ({
+        id: user._id,
+        email: user.email,
+        name: user.name,
+        lastAuthMethod: user.lastAuthMethod,
+      })),
+    };
+  },
+});
+
+// DEVELOPMENT ONLY: Clear all users from the database
+export const devClearAllUsers = mutation({
+  args: {
+    confirmDeletion: v.string(),
+    environment: v.string(),
+  },
+  handler: async (ctx, args) => {
+    // Safety checks to prevent accidental production deletion
+    if (args.confirmDeletion !== 'DELETE_ALL_USERS_CONFIRM') {
+      throw new Error('Invalid confirmation string');
+    }
+    
+    if (args.environment !== 'development') {
+      throw new Error('This operation is only allowed in development environment');
+    }
+    
+    // Additional safety check for Convex URL
+    const convexUrl = process.env.CONVEX_SITE_URL || '';
+    if (convexUrl.includes('prod') || convexUrl.includes('production')) {
+      throw new Error('This operation cannot be run on production deployment');
+    }
+    
+    // Get all users
+    const users = await ctx.db.query('users').collect();
+    const userCount = users.length;
+    
+    // Delete all users
+    const deletePromises = users.map(user => ctx.db.delete(user._id));
+    await Promise.all(deletePromises);
+    
+    console.log(`🗑️ Deleted ${userCount} users from development database`);
+    
+    return {
+      deletedCount: userCount,
+      message: `Successfully deleted ${userCount} users from development database`,
+    };
+  },
+});

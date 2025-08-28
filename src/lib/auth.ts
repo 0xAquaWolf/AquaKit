@@ -41,6 +41,14 @@ export const createAuth = (ctx: GenericCtx) =>
       //   });
       // },
     },
+    // Account linking configuration
+    account: {
+      accountLinking: {
+        enabled: true,
+        trustedProviders: ['google', 'github', 'discord'],
+        updateUserInfoOnLink: true,
+      },
+    },
     plugins: [
       // The Convex plugin is required
       convex(),
