@@ -83,10 +83,8 @@ async function main() {
 
     let deploymentFlag = '';
     if (deploymentChoice === '1') {
-      deploymentFlag = '--dev';
       console.log('🔧 Configuring development deployment...');
     } else if (deploymentChoice === '2') {
-      deploymentFlag = '--prod';
       console.log('🚀 Configuring production deployment...');
 
       const confirmProd = await question(
