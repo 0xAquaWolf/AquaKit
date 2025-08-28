@@ -138,7 +138,16 @@ export const updateLastAuthMethod = mutation({
     // Get current authenticated user
     const userMetadata = await betterAuthComponent.getAuthUser(ctx);
     if (!userMetadata) {
-      throw new Error('User not authenticated');
+      // Return silently instead of throwing - this can happen during auth transitions
+      console.warn('updateLastAuthMethod: User not authenticated yet');
+      return;
+    }
+
+    // Verify the user exists in our database
+    const user = await ctx.db.get(userMetadata.userId as Id<'users'>);
+    if (!user) {
+      console.warn('updateLastAuthMethod: User not found in database');
+      return;
     }
 
     // Update the user's last auth method

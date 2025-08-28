@@ -5,9 +5,11 @@ import { usePathname } from 'next/navigation';
 
 import { ModeToggle } from '@/components/ThemeToggleButton';
 import { Button } from '@/components/ui/button';
+import { authClient } from '@/lib/auth-client';
 
 export function Navigation() {
   const pathname = usePathname();
+  const { data: session } = authClient.useSession();
 
   // Hide login button on auth pages (login, signup, etc.)
   const isAuthPage =
@@ -20,7 +22,7 @@ export function Navigation() {
       </Link>
       <div className="flex items-center gap-2">
         <ModeToggle />
-        {!isAuthPage && (
+        {!isAuthPage && !session && (
           <Button asChild>
             <Link href="/login">Login</Link>
           </Button>

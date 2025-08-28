@@ -2,12 +2,11 @@
 
 import { useMutation, useQuery } from 'convex/react';
 
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { AppSidebar } from '@/components/app-sidebar';
-import { AuthMethodBadge } from '@/components/auth-method-badge';
 import { Separator } from '@/components/ui/separator';
 import {
   SidebarInset,
@@ -17,7 +16,7 @@ import {
 import { api } from '@/convex/_generated/api';
 import { authClient } from '@/lib/auth-client';
 
-export default function Dashboard() {
+function DashboardContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { data: session, isPending } = authClient.useSession();
@@ -35,19 +34,27 @@ export default function Dashboard() {
     if (
       authMethod &&
       session &&
-      (authMethod === 'google' ||
+      currentUser && // Wait for currentUser to be loaded
+      (authMethod === 'email' ||
+        authMethod === 'google' ||
         authMethod === 'github' ||
         authMethod === 'discord')
     ) {
-      updateAuthMethod({ authMethod }).catch((err) =>
-        console.warn('Failed to update auth method:', err)
-      );
+      // Small delay to ensure Convex auth is fully synchronized
+      const timer = setTimeout(() => {
+        updateAuthMethod({ authMethod }).catch((err) =>
+          console.warn('Failed to update auth method:', err)
+        );
+      }, 100);
+
       // Clean up URL parameter
       const url = new URL(window.location.href);
       url.searchParams.delete('authMethod');
       window.history.replaceState({}, '', url.toString());
+
+      return () => clearTimeout(timer);
     }
-  }, [searchParams, session, updateAuthMethod]);
+  }, [searchParams, session, currentUser, updateAuthMethod]);
 
   if (isPending) {
     return (
@@ -65,16 +72,11 @@ export default function Dashboard() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 justify-between">
+        <header className="flex h-16 shrink-0 items-center gap-2">
           <div className="flex items-center gap-2 px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <h1 className="text-xl font-semibold">Dashboard</h1>
-          </div>
-          <div className="px-4">
-            {currentUser?.lastAuthMethod && (
-              <AuthMethodBadge authMethod={currentUser.lastAuthMethod} />
-            )}
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
@@ -87,5 +89,17 @@ export default function Dashboard() {
         </div>
       </SidebarInset>
     </SidebarProvider>
+  );
+}
+
+export default function Dashboard() {
+  return (
+    <Suspense fallback={
+      <div className="flex h-screen items-center justify-center">
+        <div className="text-lg">Loading...</div>
+      </div>
+    }>
+      <DashboardContent />
+    </Suspense>
   );
 }
