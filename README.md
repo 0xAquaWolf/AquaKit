@@ -268,6 +268,37 @@ npx convex env set GITHUB_CLIENT_ID "your-github-client-id"
 npx convex env set GITHUB_CLIENT_SECRET "your-github-client-secret"
 ```
 
+#### MCP Server Setup
+
+AquaKit includes MCP (Model Context Protocol) server integration for enhanced AI development. Configure your editor to use the Convex MCP server:
+
+**Cursor Configuration:**
+
+Add to your `cline_mcp_settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "convex": {
+      "command": "npx",
+      "args": ["-y", "convex@latest", "mcp", "start"]
+    }
+  }
+}
+```
+
+**Claude Code Configuration:**
+
+Add the MCP server and test with:
+
+```bash
+# Add the server
+claude mcp add-json convex '{"type":"stdio","command":"npx","args":["convex","mcp","start"]}'
+
+# Test the connection
+claude mcp get convex
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- DEVELOPMENT -->
