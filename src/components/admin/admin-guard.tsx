@@ -2,10 +2,7 @@
 
 import { Authenticated, Unauthenticated } from 'convex/react';
 
-import { useEffect } from 'react';
-
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -65,15 +62,7 @@ function AdminAccessGuard({
   title,
   description,
 }: AdminGuardProps & { title: string; description: string }) {
-  const router = useRouter();
   const isAdmin = useIsAdmin();
-
-  useEffect(() => {
-    // Redirect non-admins after admin status is determined
-    if (isAdmin === false) {
-      router.push('/dashboard');
-    }
-  }, [isAdmin, router]);
 
   // Show loading state while checking admin status
   if (isAdmin === undefined) {
