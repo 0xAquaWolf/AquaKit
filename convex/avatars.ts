@@ -29,6 +29,7 @@ export const storeAvatarFromUrl = action({
 
       // Update the user record with the storage ID
       // TODO: Fix type generation issue - this will work at runtime
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await ctx.runMutation((internal.auth as any).updateUserAvatarInternal, {
         userId: args.userId,
         avatarStorageId: storageId,

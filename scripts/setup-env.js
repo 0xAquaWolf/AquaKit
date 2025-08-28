@@ -6,7 +6,9 @@
  * Run with: node scripts/setup-env.js [dev|prod]
  */
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { spawn } = require('child_process');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const readline = require('readline');
 
 const rl = readline.createInterface({

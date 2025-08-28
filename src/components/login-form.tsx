@@ -1,6 +1,5 @@
 'use client';
 
-import { useMutation, useQuery } from 'convex/react';
 import { Eye, EyeOff } from 'lucide-react';
 
 import { useEffect, useState } from 'react';
@@ -18,7 +17,6 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { api } from '@/convex/_generated/api';
 import { authClient } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 
@@ -31,8 +29,6 @@ export function LoginForm({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
-  const updateAuthMethod = useMutation(api.auth.updateLastAuthMethod);
-  const currentUser = useQuery(api.auth.getCurrentUser);
   const [lastAuthMethod, setLastAuthMethod] = useState<
     'email' | 'google' | 'github' | 'discord' | null
   >(null);
