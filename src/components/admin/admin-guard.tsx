@@ -1,7 +1,10 @@
 'use client';
 
+import { useQuery } from 'convex/react';
+
 import { ReactNode } from 'react';
 
+import { api } from '@/convex/_generated/api';
 import { authClient } from '@/lib/auth-client';
 
 interface AdminGuardProps {
@@ -11,8 +14,9 @@ interface AdminGuardProps {
 
 export function AdminGuard({ children, fallback }: AdminGuardProps) {
   const { data: session, isPending } = authClient.useSession();
+  const isAdmin = useQuery(api.auth.isCurrentUserAdmin);
 
-  if (isPending) {
+  if (isPending || isAdmin === undefined) {
     return fallback || <div>Loading...</div>;
   }
 
@@ -20,10 +24,7 @@ export function AdminGuard({ children, fallback }: AdminGuardProps) {
     return fallback || <div>Access denied. Please sign in.</div>;
   }
 
-  // Check if user has admin role using Better Auth admin plugin
-  const hasAdminRole = session.user.role === 'admin';
-
-  if (!hasAdminRole) {
+  if (!isAdmin) {
     return fallback || <div>Access denied. Admin privileges required.</div>;
   }
 
