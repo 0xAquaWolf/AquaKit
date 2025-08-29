@@ -5,6 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+import { AdminDashboard } from '@/components/admin/admin-dashboard';
 import { AdminGuard } from '@/components/admin/admin-guard';
 import { Button } from '@/components/ui/button';
 import {
@@ -24,7 +25,8 @@ export default function AdminPage() {
             <CardHeader>
               <CardTitle>Access Denied</CardTitle>
               <CardDescription>
-                You need to be logged in with admin privileges to access this page.
+                You need to be logged in with admin privileges to access this
+                page.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -48,11 +50,10 @@ function AdminPageContent() {
     router.back();
   };
 
-  // Show admin panel for admins - clean slate
   return (
     <div className="py-8">
       <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Back Button */}
           <div className="mb-6">
             <Button
@@ -65,22 +66,16 @@ function AdminPageContent() {
             </Button>
           </div>
 
-          {/* Admin Panel Content - Clean Slate */}
-          <div className="rounded-xl border bg-card text-card-foreground shadow">
-            <div className="flex flex-col space-y-1.5 p-6">
-              <h1 className="text-3xl font-bold tracking-tight">
-                Admin Panel
-              </h1>
-              <p className="text-muted-foreground">
-                Welcome to the admin panel. Start building your admin functionality here.
-              </p>
-            </div>
-            <div className="p-6 pt-0">
-              <p className="text-sm text-muted-foreground">
-                This is a clean slate admin panel with authentication guard.
-              </p>
-            </div>
+          {/* Admin Panel Header */}
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold tracking-tight">Admin Panel</h1>
+            <p className="text-muted-foreground">
+              Manage users, roles, and application settings
+            </p>
           </div>
+
+          {/* Admin Dashboard */}
+          <AdminDashboard />
         </div>
       </div>
     </div>

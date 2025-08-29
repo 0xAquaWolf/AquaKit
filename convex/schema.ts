@@ -16,7 +16,12 @@ export default defineSchema({
       )
     ),
     role: v.optional(v.union(v.literal('admin'), v.literal('user'))),
+    // Admin plugin fields for user banning
+    banned: v.optional(v.boolean()),
+    banReason: v.optional(v.string()),
+    banExpires: v.optional(v.number()), // Unix timestamp
   })
     .index('email', ['email'])
-    .index('role', ['role']),
+    .index('role', ['role'])
+    .index('banned', ['banned']),
 });

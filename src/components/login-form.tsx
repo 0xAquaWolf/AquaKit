@@ -4,7 +4,7 @@ import { Eye, EyeOff } from 'lucide-react';
 
 import { useEffect, useState } from 'react';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { AuthMethodBadge } from '@/components/auth-method-badge';
 import { Button } from '@/components/ui/button';
@@ -25,6 +25,7 @@ export function LoginForm({
   ...props
 }: React.ComponentProps<'div'>) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [showSignIn, setShowSignIn] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -42,6 +43,18 @@ export function LoginForm({
       }
     }
   }, []);
+
+  // Check for error message in URL parameters (e.g., from ban redirect)
+  useEffect(() => {
+    const errorParam = searchParams.get('error');
+    if (errorParam) {
+      setError(decodeURIComponent(errorParam));
+      // Clean up URL
+      const url = new URL(window.location.href);
+      url.searchParams.delete('error');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,7 +74,7 @@ export function LoginForm({
             onSuccess: async () => {
               // Store in localStorage and navigate
               localStorage.setItem('lastAuthMethod', 'email');
-              router.push('/dashboard?authMethod=email');
+              router.push('/auth-callback?authMethod=email');
             },
             onError: (ctx) => {
               console.error('Sign in error:', ctx);
@@ -80,7 +93,7 @@ export function LoginForm({
             onSuccess: async () => {
               // Store in localStorage and navigate
               localStorage.setItem('lastAuthMethod', 'email');
-              router.push('/dashboard?authMethod=email');
+              router.push('/auth-callback?authMethod=email');
             },
             onError: (ctx) => {
               console.error('Sign up error:', ctx);
@@ -104,7 +117,7 @@ export function LoginForm({
       localStorage.setItem('lastAuthMethod', 'google');
       await authClient.signIn.social({
         provider: 'google',
-        callbackURL: '/dashboard?authMethod=google',
+        callbackURL: '/auth-callback?authMethod=google',
       });
     } catch (err) {
       console.error('Google sign in error:', err);
@@ -120,7 +133,7 @@ export function LoginForm({
       localStorage.setItem('lastAuthMethod', 'github');
       await authClient.signIn.social({
         provider: 'github',
-        callbackURL: '/dashboard?authMethod=github',
+        callbackURL: '/auth-callback?authMethod=github',
       });
     } catch (err) {
       console.error('GitHub sign in error:', err);
@@ -136,7 +149,7 @@ export function LoginForm({
       localStorage.setItem('lastAuthMethod', 'discord');
       await authClient.signIn.social({
         provider: 'discord',
-        callbackURL: '/dashboard?authMethod=discord',
+        callbackURL: '/auth-callback?authMethod=discord',
       });
     } catch (err) {
       console.error('Discord sign in error:', err);
