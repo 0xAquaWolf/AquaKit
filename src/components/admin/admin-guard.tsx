@@ -2,7 +2,7 @@
 
 import { useQuery } from 'convex/react';
 
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { api } from '@/convex/_generated/api';
 import { authClient } from '@/lib/auth-client';
@@ -17,50 +17,53 @@ interface AdminGuardProps {
 export function AdminGuard({ children, fallback }: AdminGuardProps) {
   const { data: session, isPending: sessionPending } = authClient.useSession();
   const isAdmin = useQuery(api.auth.isCurrentUserAdmin);
+  const [hasStabilized, setHasStabilized] = useState(false);
 
-  // Log current state for debugging
-  console.log('AdminGuard state:', {
-    sessionPending,
-    hasSession: !!session,
-    isAdmin,
-    isAdminUndefined: isAdmin === undefined
-  });
+  // Give the admin check a moment to stabilize after session loads
+  useEffect(() => {
+    if (!sessionPending && session && isAdmin !== undefined) {
+      // Wait a brief moment after session loads to let admin check stabilize
+      const timer = setTimeout(() => {
+        setHasStabilized(true);
+      }, 100); // 100ms should be enough for the query to update
+      
+      return () => clearTimeout(timer);
+    } else if (!session && !sessionPending) {
+      // If there's no session, we can stabilize immediately
+      setHasStabilized(true);
+    } else {
+      setHasStabilized(false);
+    }
+  }, [sessionPending, session, isAdmin]);
 
-  // Show loading if session is pending OR if we have a session but admin check is still loading
+  // Show loading while session is pending
   if (sessionPending) {
-    console.log('Showing loading: session pending');
     return <AuthLoading />;
   }
 
-  if (session && isAdmin === undefined) {
-    console.log('Showing loading: session exists but admin check undefined');
+  // Show loading while admin status is undefined
+  if (isAdmin === undefined) {
     return <AuthLoading />;
   }
 
-  if (!session && isAdmin === undefined) {
-    console.log('Showing loading: no session and admin check undefined');
+  // Show loading while we're waiting for the admin check to stabilize
+  // This prevents the flash of "access denied" when session loads but admin check hasn't updated yet
+  if (session && !hasStabilized) {
     return <AuthLoading />;
   }
 
-  // No session - show sign in prompt
+  // At this point we have definitive and stabilized results
+
+  // No session - show access denied
   if (!session) {
-    console.log('Showing access denied: no session');
     return fallback || <div>Access denied. Please sign in.</div>;
   }
 
-  // Session exists and user is explicitly not admin
-  if (isAdmin === false) {
-    console.log('Showing access denied: not admin');
+  // Session exists and admin check is stabilized
+  if (isAdmin === true) {
+    return <>{children}</>;
+  } else {
+    // isAdmin === false - user is definitely not an admin
     return fallback || <div>Access denied. Admin privileges required.</div>;
   }
-
-  // Session exists and user is admin
-  if (isAdmin === true) {
-    console.log('Showing admin content');
-    return <>{children}</>;
-  }
-
-  // Should not reach here - fallback to loading
-  console.log('Fallback to loading');
-  return <AuthLoading />;
 }
