@@ -1,15 +1,11 @@
 'use client';
 
-import { Authenticated, Unauthenticated } from 'convex/react';
 import { ArrowLeft } from 'lucide-react';
-
-import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import { AdminDashboard } from '@/components/admin/admin-dashboard';
-import { AdminDashboardSkeleton } from '@/components/admin/admin-dashboard-skeleton';
+import { AdminGuard } from '@/components/admin/admin-guard';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -18,26 +14,17 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { useIsAdmin } from '@/hooks/use-admin';
-import { authClient } from '@/lib/auth-client';
 
 export default function AdminPage() {
-  const { isPending } = authClient.useSession();
-
-  // Show skeleton while checking authentication state
-  if (isPending) {
-    return <AdminDashboardSkeleton />;
-  }
-
   return (
-    <>
-      <Unauthenticated>
-        <div className="min-h-screen flex items-center justify-center">
+    <AdminGuard
+      fallback={
+        <div className="min-h-screen flex items-center justify-center py-8">
           <Card className="w-full max-w-md">
             <CardHeader>
-              <CardTitle>Authentication Required</CardTitle>
+              <CardTitle>Access Denied</CardTitle>
               <CardDescription>
-                You need to be logged in to access this page.
+                You need to be logged in with admin privileges to access this page.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -47,60 +34,21 @@ export default function AdminPage() {
             </CardContent>
           </Card>
         </div>
-      </Unauthenticated>
-      <Authenticated>
-        <AdminPageContent />
-      </Authenticated>
-    </>
+      }
+    >
+      <AdminPageContent />
+    </AdminGuard>
   );
 }
 
 function AdminPageContent() {
-  const { isPending: sessionPending } = authClient.useSession();
-  const isAdmin = useIsAdmin();
-  const [isInitialRender, setIsInitialRender] = useState(true);
   const router = useRouter();
-
-  useEffect(() => {
-    // Small delay to prevent flash during initial render
-    const timer = setTimeout(() => {
-      setIsInitialRender(false);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleGoBack = () => {
     router.back();
   };
 
-  // Show skeleton while checking session, admin status, or during initial render
-  if (isInitialRender || sessionPending || isAdmin === undefined) {
-    return <AdminDashboardSkeleton />;
-  }
-
-  // Show access denied for non-admins
-  if (isAdmin === false) {
-    return (
-      <div className="min-h-screen flex items-center justify-center py-8">
-        <Card className="w-full max-w-md">
-          <CardHeader>
-            <CardTitle>Admin Access Required</CardTitle>
-            <CardDescription>
-              You need admin privileges to access the admin panel.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button asChild className="w-full">
-              <Link href="/dashboard">Go to Dashboard</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
-  // Show admin dashboard for admins
+  // Show admin panel for admins - clean slate
   return (
     <div className="py-8">
       <div className="container mx-auto px-6">
@@ -117,7 +65,22 @@ function AdminPageContent() {
             </Button>
           </div>
 
-          <AdminDashboard />
+          {/* Admin Panel Content - Clean Slate */}
+          <div className="rounded-xl border bg-card text-card-foreground shadow">
+            <div className="flex flex-col space-y-1.5 p-6">
+              <h1 className="text-3xl font-bold tracking-tight">
+                Admin Panel
+              </h1>
+              <p className="text-muted-foreground">
+                Welcome to the admin panel. Start building your admin functionality here.
+              </p>
+            </div>
+            <div className="p-6 pt-0">
+              <p className="text-sm text-muted-foreground">
+                This is a clean slate admin panel with authentication guard.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

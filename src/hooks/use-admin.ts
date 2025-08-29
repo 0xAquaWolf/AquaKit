@@ -14,11 +14,3 @@ export function useIsAdmin() {
   const isAdmin = useQuery(api.auth.isCurrentUserAdmin, getCurrentUser ? {} : "skip");
   return isAdmin;
 }
-
-/**
- * Hook to get all admin users (admin only)
- */
-export function useAdminUsers() {
-  const adminUsers = useQuery(api.auth.getAdminUsers);
-  return adminUsers ?? [];
-}

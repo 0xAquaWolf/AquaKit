@@ -1,4 +1,5 @@
 import { convexClient } from '@convex-dev/better-auth/client/plugins';
+import { adminClient } from 'better-auth/client/plugins';
 // import {
 // genericOAuthClient,
 // anonymousClient,
@@ -17,5 +18,5 @@ export const authClient = createAuthClient({
       : process.env.NEXT_PUBLIC_SITE_URL
         ? `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth`
         : `${getCurrentUrls().siteUrl}/api/auth`,
-  plugins: [convexClient()],
+  plugins: [convexClient(), adminClient()],
 });
