@@ -7,6 +7,7 @@ import { useMutation, useQuery } from 'convex/react';
 import { AppSidebar } from '@/components/app-sidebar';
 import { GithubStar, GithubStarSkeleton } from '@/components/github-star';
 import { DashboardSkeleton } from '@/components/dashboard-skeleton';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { Separator } from '@/components/ui/separator';
 import {
   SidebarInset,
@@ -72,7 +73,8 @@ function DashboardLayoutInner({ children }: PropsWithChildren) {
             <Separator orientation="vertical" className="mr-2 h-4" />
             <h1 className="text-xl font-semibold">Dashboard</h1>
           </div>
-          <div className="px-4">
+          <div className="px-4 flex items-center gap-2">
+            <ThemeToggle />
             <Suspense fallback={<GithubStarSkeleton />}>
               <GithubStar />
             </Suspense>

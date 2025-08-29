@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { ModeToggle } from '@/components/ThemeToggleButton';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { GithubStar, GithubStarSkeleton } from '@/components/github-star';
 import { Button } from '@/components/ui/button';
 import { useIsAdmin } from '@/hooks/use-admin';
@@ -34,7 +34,7 @@ export function Navigation() {
             <Link href="/admin">🔧 Admin</Link>
           </Button>
         )}
-        <ModeToggle />
+        <ThemeToggle />
         {!isAuthPage && !isPending && !session && (
           <Button asChild>
             <Link href="/login">Login</Link>
