@@ -65,7 +65,44 @@ Key Features:
 - **🧠 AI-Ready**: Pre-configured patterns for integrating any AI model or API
 - **👤 Admin System**: Role-based access control with debug tools and user management
 
-## ✨ Recent Updates (December 2024)
+## ✨ Recent Updates (August 2025)
+
+### 🚀 **Latest Features & Improvements**
+
+#### **🔐 Enhanced Authentication & User Management**
+- **Advanced User Banning System**: Comprehensive user ban/unban functionality with admin controls
+- **Improved Auth Callbacks**: Enhanced auth-callback page with Suspense and better error handling  
+- **Stabilized Admin Guards**: Refined AdminGuard component with buffer timeouts for smooth auth checks
+- **Session Optimization**: Streamlined session handling and reduced authentication race conditions
+- **Loading State Improvements**: Better loading skeletons and Suspense boundaries throughout the app
+
+#### **👤 Advanced Admin System**
+- **Complete User Management**: Create, delete, promote/demote users directly from admin dashboard
+- **Role Assignment System**: Full CRUD operations for user roles and permissions
+- **Account Linking Diagnostics**: Advanced OAuth provider linking tools and debugging utilities
+- **Admin Statistics Dashboard**: Real-time insights into user activity and system health
+- **Production-Safe Operations**: Development-only destructive actions with safety checks
+
+#### **🎨 UI/UX Enhancements**
+- **GitHub Stars Integration**: Dynamic GitHub stars fetching with caching and loading states
+- **Dashboard Layout Redesign**: Improved dashboard with better content structure and navigation
+- **Navigation Improvements**: Enhanced navigation with GitHub stars display and better responsive design
+- **Component Refinements**: Updated form components, dialogs, tables, and loading states
+- **Theme Integration**: Consistent theme provider implementation across all components
+
+#### **🔧 Developer Experience**
+- **MCP Server Integration**: Complete setup for Convex MCP server with Cursor and Claude Code
+- **Enhanced Error Handling**: Better error states and user feedback throughout the application  
+- **Development Scripts**: User management and debugging scripts for development workflows
+- **Code Quality**: Consistent formatting, linting, and TypeScript improvements
+- **Authentication Debugging**: Advanced tools for testing OAuth flows and account linking
+
+#### **📚 Documentation & Setup**
+- **Convex Guidelines**: Comprehensive Convex development rules and best practices
+- **MCP Configuration**: Detailed setup instructions for AI-powered development workflows
+- **OAuth Setup Guides**: Updated step-by-step guides for GitHub, Google, and Discord OAuth
+- **Admin System Docs**: Complete documentation for admin setup, components, and workflows
+- **Production Deployment**: Real-world production deployment guide with security considerations
 
 ### 🔐 Enhanced Authentication System
 
@@ -133,28 +170,74 @@ Key Features:
 
 ## Getting Started
 
-To get a local copy up and running, follow these simple steps.
+Get AquaKit running locally in minutes with this comprehensive setup guide.
 
 ### Prerequisites
 
-- Node.js (version 18 or higher)
-- npm or your preferred package manager
+- **Node.js** (version 18 or higher)
+- **npm** (or your preferred package manager)
+- **Git** for cloning the repository
+
+### Quick Start (5 minutes)
+
+1. **Clone and Install**
+   ```bash
+   git clone https://github.com/0xAquaWolf/AquaKit.git
+   cd AquaKit
+   npm install
+   ```
+
+2. **Set up Convex Backend**
+   ```bash
+   # Install Convex CLI if you haven't already
+   npm install -g convex
+   
+   # Initialize Convex project
+   npx convex dev
+   ```
+
+3. **Configure Environment**
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env.local
+   
+   # Add your Convex URL (get this from the previous step)
+   echo 'NEXT_PUBLIC_CONVEX_URL="your-convex-deployment-url"' >> .env.local
+   echo 'CONVEX_SITE_URL="http://localhost:3000"' >> .env.local
+   ```
+
+4. **Start Development**
+   ```bash
+   npm run dev
+   ```
+
+5. **Set up Admin Access** (Optional but recommended)
+   ```bash
+   # Run the interactive admin setup
+   node scripts/setup-admin.js
+   ```
+
+🎉 **That's it!** Visit [http://localhost:3000](http://localhost:3000) to see AquaKit in action.
 
 ### Environment Variables
 
-To run this project, you will need to add the following environment variables to your `.env.local` file:
+Your `.env.local` file should include:
 
 ```bash
+# Required - Convex Configuration
 NEXT_PUBLIC_CONVEX_URL="your-convex-deployment-url"
 CONVEX_SITE_URL="http://localhost:3000"
 
-# OAuth Provider Credentials (Optional)
+# Optional - OAuth Provider Credentials
 GITHUB_CLIENT_ID="your-github-client-id"
 GITHUB_CLIENT_SECRET="your-github-client-secret"
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
 DISCORD_CLIENT_ID="your-discord-client-id"
 DISCORD_CLIENT_SECRET="your-discord-client-secret"
+
+# Optional - Admin Configuration (set via Convex env)
+# ADMIN_EMAILS="admin@example.com,admin2@example.com"
 ```
 
 #### OAuth Setup Guides
@@ -185,22 +268,18 @@ The admin system provides:
 - Account linking diagnostics and testing utilities
 - Development-safe database operations and user role management
 
-### Installation
+### 🌟 GitHub Stars Integration
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/0xAquaWolf/AquaKit.git
-   ```
-2. Install packages
-   ```sh
-   npm install
-   ```
-3. Start the development server
-   ```sh
-   npm run dev
-   ```
+AquaKit now includes dynamic GitHub stars fetching! The stars count is displayed in:
+- Navigation bar with live updates
+- Dashboard with caching for performance
+- Loading states for smooth user experience
 
-The application will be available at [http://localhost:3000](http://localhost:3000)
+**How it works:**
+- Server-side GitHub API integration at `/api/github-stars`
+- Automatic caching with 1-hour refresh intervals  
+- Graceful fallback if GitHub API is unavailable
+- Hover tooltips showing exact star count
 
 ## 📚 Documentation
 
@@ -268,11 +347,18 @@ npx convex env set GITHUB_CLIENT_ID "your-github-client-id"
 npx convex env set GITHUB_CLIENT_SECRET "your-github-client-secret"
 ```
 
-#### MCP Server Setup
+### 🤖 AI-Powered Development with MCP
 
-AquaKit includes MCP (Model Context Protocol) server integration for enhanced AI development. Configure your editor to use the Convex MCP server:
+AquaKit includes **MCP (Model Context Protocol)** server integration for supercharged AI development. This enables Claude Code and Cursor to directly interact with your Convex backend.
 
-**Cursor Configuration:**
+#### **What You Get:**
+- **Direct Database Access**: AI can read/write to your Convex database
+- **Function Execution**: Run Convex queries and mutations from AI chat
+- **Schema Awareness**: AI understands your data models and relationships
+- **Environment Management**: Set/get environment variables through AI
+- **Real-time Development**: AI can test and debug your backend functions
+
+#### **Setup for Cursor IDE:**
 
 Add to your `cline_mcp_settings.json`:
 
@@ -287,17 +373,26 @@ Add to your `cline_mcp_settings.json`:
 }
 ```
 
-**Claude Code Configuration:**
-
-Add the MCP server and test with:
+#### **Setup for Claude Code:**
 
 ```bash
-# Add the server
+# Add the MCP server
 claude mcp add-json convex '{"type":"stdio","command":"npx","args":["convex","mcp","start"]}'
 
 # Test the connection
 claude mcp get convex
+
+# Verify it's working
+claude "Show me all my Convex tables and their schemas"
 ```
+
+#### **Example AI Capabilities:**
+Once configured, you can ask your AI:
+- *"Show me all users in the database"*
+- *"Create a new user with email john@example.com"*
+- *"Run the getUserById function with ID 123"*  
+- *"Set the ADMIN_EMAILS environment variable"*
+- *"Explain the auth.ts schema structure"*
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -307,15 +402,31 @@ claude mcp get convex
 
 ### Available Scripts
 
+#### **Core Development**
 - `npm run dev` - Start development server with Turbopack
-- `npm run debug` - Start development server with Node.js debugger enabled
+- `npm run debug` - Start development server with Node.js debugger enabled  
 - `npm run build` - Build for production with Turbopack
 - `npm run start` - Start production server
+- `npm run dev:backend` - Start Convex development server
+- `npm run dev:frontend` - Start Next.js with HTTPS and Turbopack
+
+#### **Code Quality**
 - `npm run lint` - Run ESLint
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting
-- `npm run dev:backend` - Start Convex development server
-- `npm run dev:frontend` - Start Next.js with HTTPS and Turbopack
+
+#### **Admin & Development Tools**
+- `node scripts/setup-admin.js` - Interactive admin setup wizard
+- `node scripts/clear-dev-users.js` - Clear development users (dev only)
+- `node scripts/debug-accounts.js` - Debug account linking issues
+- `node scripts/setup-env.js` - Environment setup wizard
+
+#### **Convex Operations**
+- `npx convex dev` - Start Convex development server
+- `npx convex deploy` - Deploy to production
+- `npx convex env set KEY "value"` - Set environment variables
+- `npx convex env list` - List all environment variables
+- `npx convex mcp start` - Start MCP server for AI integration
 
 ### Architecture Overview
 
