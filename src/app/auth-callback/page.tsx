@@ -2,14 +2,14 @@
 
 import { useQuery } from 'convex/react';
 
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import { api } from '@/convex/_generated/api';
 import { authClient } from '@/lib/auth-client';
 
-export default function AuthCallbackPage() {
+function AuthCallbackContent() {
   const { data: session } = authClient.useSession();
   const banStatus = useQuery(
     api.auth.checkCurrentUserBanStatus,
@@ -59,5 +59,20 @@ export default function AuthCallbackPage() {
         <p className="mt-4 text-muted-foreground">Completing sign in...</p>
       </div>
     </div>
+  );
+}
+
+export default function AuthCallbackPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-4 text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    }>
+      <AuthCallbackContent />
+    </Suspense>
   );
 }

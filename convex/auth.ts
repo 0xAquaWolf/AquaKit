@@ -30,7 +30,7 @@ export const {
     const user = await ctx.db.get(session.userId as Id<'users'>);
     // If user doesn't exist yet, allow session creation (they're in the process of being created)
     if (!user) {
-      return session;
+      return;
     }
 
     // Check if user is banned
@@ -55,8 +55,6 @@ export const {
         );
       }
     }
-
-    return session;
   },
   onCreateUser: async (ctx, user) => {
     // Generate a random color for users without an image
@@ -582,9 +580,9 @@ export const adminListUsers = query({
         }
 
         if (args.sortDirection === 'desc') {
-          return bValue > aValue ? 1 : -1;
+          return (bValue as any) > (aValue as any) ? 1 : -1;
         }
-        return aValue > bValue ? 1 : -1;
+        return (aValue as any) > (bValue as any) ? 1 : -1;
       });
     }
 
