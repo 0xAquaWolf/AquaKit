@@ -22,10 +22,10 @@ export function AdminGuard({ children, fallback }: AdminGuardProps) {
   // Give the admin check a moment to stabilize after session loads
   useEffect(() => {
     if (!sessionPending && session && isAdmin !== undefined) {
-      // Wait a brief moment after session loads to let admin check stabilize
+      // Wait longer for admin check to stabilize after session loads
       const timer = setTimeout(() => {
         setHasStabilized(true);
-      }, 100); // 100ms should be enough for the query to update
+      }, 1000); // 1 second buffer to ensure query has time to update
       
       return () => clearTimeout(timer);
     } else if (!session && !sessionPending) {
