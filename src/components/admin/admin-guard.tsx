@@ -7,6 +7,8 @@ import { ReactNode } from 'react';
 import { api } from '@/convex/_generated/api';
 import { authClient } from '@/lib/auth-client';
 
+import { AdminLoadingSkeleton } from './admin-loading-skeleton';
+
 interface AdminGuardProps {
   children: ReactNode;
   fallback?: ReactNode;
@@ -16,8 +18,9 @@ export function AdminGuard({ children, fallback }: AdminGuardProps) {
   const { data: session, isPending } = authClient.useSession();
   const isAdmin = useQuery(api.auth.isCurrentUserAdmin);
 
+  // Show loading skeleton while checking authentication and admin status
   if (isPending || isAdmin === undefined) {
-    return fallback || <div>Loading...</div>;
+    return <AdminLoadingSkeleton />;
   }
 
   if (!session) {
