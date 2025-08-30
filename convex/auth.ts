@@ -228,7 +228,7 @@ export const isCurrentUserAdmin = query({
       }
 
       // Check if user is admin or if their email is in the admin list
-      if (user.role === 'admin') {
+      if ((user as any).role === 'admin') {
         return true;
       }
 
@@ -241,133 +241,6 @@ export const isCurrentUserAdmin = query({
       // Never surface server errors to the client for this check
       return false;
     }
-  },
-});
-
-// Set user role (admin only)
-export const setUserRole = mutation({
-  args: {
-    userId: v.id('users'),
-    role: v.union(v.literal('admin'), v.literal('user')),
-  },
-  returns: v.null(),
-  handler: async (ctx, args) => {
-    // Check if current user is admin
-    const userMetadata = await betterAuthComponent.getAuthUser(ctx);
-    if (!userMetadata) {
-      throw new Error('Not authenticated');
-    }
-
-    const currentUser = await ctx.db.get(userMetadata.userId as Id<'users'>);
-    if (!currentUser) {
-      throw new Error('Current user not found');
-    }
-
-    // Check if current user is admin
-    const adminEmails =
-      process.env.ADMIN_EMAILS?.split(',').map((email) => email.trim()) || [];
-    const isAdmin =
-      currentUser.role === 'admin' || adminEmails.includes(currentUser.email);
-
-    if (!isAdmin) {
-      throw new Error('Only admins can set user roles');
-    }
-
-    // Update the target user's role
-    await ctx.db.patch(args.userId, {
-      role: args.role,
-    });
-
-    return null;
-  },
-});
-
-// Initialize admin users based on environment variable
-export const initializeAdmins = mutation({
-  args: {},
-  returns: v.null(),
-  handler: async (ctx) => {
-    const adminEmails =
-      process.env.ADMIN_EMAILS?.split(',').map((email) => email.trim()) || [];
-
-    if (adminEmails.length === 0) {
-      console.log(
-        'No admin emails configured in ADMIN_EMAILS environment variable'
-      );
-      return null;
-    }
-
-    let updatedCount = 0;
-
-    for (const email of adminEmails) {
-      const users = await ctx.db
-        .query('users')
-        .withIndex('email', (q) => q.eq('email', email))
-        .collect();
-
-      for (const user of users) {
-        if (user.role !== 'admin') {
-          await ctx.db.patch(user._id, {
-            role: 'admin',
-          });
-          updatedCount++;
-          console.log(`✅ Set admin role for ${email}`);
-        }
-      }
-    }
-
-    if (updatedCount > 0) {
-      console.log(`🔧 Initialized ${updatedCount} admin users`);
-    }
-
-    return null;
-  },
-});
-
-// Get all admin users
-export const getAdminUsers = query({
-  args: {},
-  returns: v.array(
-    v.object({
-      _id: v.id('users'),
-      email: v.string(),
-      name: v.optional(v.string()),
-      role: v.optional(v.union(v.literal('admin'), v.literal('user'))),
-    })
-  ),
-  handler: async (ctx) => {
-    // Check if current user is admin
-    const userMetadata = await betterAuthComponent.getAuthUser(ctx);
-    if (!userMetadata) {
-      throw new Error('Not authenticated');
-    }
-
-    const currentUser = await ctx.db.get(userMetadata.userId as Id<'users'>);
-    if (!currentUser) {
-      throw new Error('Current user not found');
-    }
-
-    const adminEmails =
-      process.env.ADMIN_EMAILS?.split(',').map((email) => email.trim()) || [];
-    const isAdmin =
-      currentUser.role === 'admin' || adminEmails.includes(currentUser.email);
-
-    if (!isAdmin) {
-      throw new Error('Only admins can view admin users');
-    }
-
-    // Get all admin users
-    const adminUsers = await ctx.db
-      .query('users')
-      .withIndex('role', (q) => q.eq('role', 'admin'))
-      .collect();
-
-    return adminUsers.map((user) => ({
-      _id: user._id,
-      email: user.email,
-      name: user.name,
-      role: user.role,
-    }));
   },
 });
 

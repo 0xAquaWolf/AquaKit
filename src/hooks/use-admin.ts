@@ -1,8 +1,6 @@
 'use client';
 
-import { useQuery } from 'convex/react';
-
-import { api } from '@/convex/_generated/api';
+import { authClient } from '@/lib/auth-client';
 
 /**
  * Hook to check if the current user is an admin
@@ -10,7 +8,8 @@ import { api } from '@/convex/_generated/api';
  * Returns undefined while loading, false for non-admin, true for admin
  */
 export function useIsAdmin() {
-  const getCurrentUser = useQuery(api.auth.getCurrentUser);
-  const isAdmin = useQuery(api.auth.isCurrentUserAdmin, getCurrentUser ? {} : "skip");
-  return isAdmin;
+  const { data: session } = authClient.useSession();
+  console.log('session (useIsAdmin)', session);
+
+  return (session?.user as { role?: string })?.role === 'admin';
 }
