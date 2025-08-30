@@ -1,6 +1,5 @@
 'use client';
 
-import { useSession } from 'better-auth/react';
 import { ReactNode } from 'react';
 
 import { authClient } from '@/lib/auth-client';
@@ -11,7 +10,7 @@ interface AdminGuardProps {
 }
 
 export function AdminGuard({ children, fallback }: AdminGuardProps) {
-  const { data: session, isPending } = useSession();
+  const { data: session, isPending } = authClient.useSession();
 
   if (isPending) {
     return fallback || <div>Loading...</div>;
@@ -22,7 +21,7 @@ export function AdminGuard({ children, fallback }: AdminGuardProps) {
   }
 
   // Check if user has admin role using Better Auth admin plugin
-  const hasAdminRole = session.user.role === 'admin';
+  const hasAdminRole = (session.user as { role?: string })?.role === 'admin';
 
   if (!hasAdminRole) {
     return fallback || <div>Access denied. Admin privileges required.</div>;

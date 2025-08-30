@@ -31,7 +31,7 @@ export async function GET() {
       { stars, html_url },
       { headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=86400' } }
     );
-  } catch (err) {
+  } catch {
     return NextResponse.json(
       { error: 'Unexpected error' },
       { status: 500, headers: { 'Cache-Control': 's-maxage=60' } }
