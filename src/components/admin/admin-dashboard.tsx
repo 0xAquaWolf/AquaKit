@@ -7,8 +7,8 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-import { AdminStats } from './admin-stats';
-import { UserList } from './user-list';
+// import { AdminStats } from './admin-stats';
+// import { UserList } from './user-list';
 
 export function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -36,7 +36,7 @@ export function AdminDashboard() {
         </TabsList>
 
         <TabsContent value="overview" className="space-y-6">
-          <AdminStats />
+          {/* <AdminStats /> */}
 
           <Card>
             <CardHeader>
@@ -74,7 +74,7 @@ export function AdminDashboard() {
         </TabsContent>
 
         <TabsContent value="users" className="space-y-6">
-          <UserList />
+          {/* <UserList /> */}
         </TabsContent>
 
         <TabsContent value="permissions" className="space-y-6">
