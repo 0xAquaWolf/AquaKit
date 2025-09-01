@@ -2,6 +2,26 @@
   "name": "AquaKit",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": "0xAquaWolf",
+  "description": "AquaKit is the ultimate AI SaaS starter kit designed to dramatically accelerate your development process. Built with today's most powerful developer tools - Next.js 15, TailwindCSS, Claude Code + Cursor, Better Auth, Convex, and Polar.sh - this starter kit eliminates months of setup and configuration, allowing you to focus on building your unique AI features and getting to market faster.",
+  "homepage": "https://github.com/0xAquaWolf/AquaKit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0xAquaWolf/AquaKit.git"
+  },
+  "keywords": [
+    "AI",
+    "SaaS",
+    "starter",
+    "kit",
+    "Next.js",
+    "TailwindCSS",
+    "Claude Code",
+    "Better Auth",
+    "Convex",
+    "Polar.sh"
+  ],
   "scripts": {
     "debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build --turbopack",

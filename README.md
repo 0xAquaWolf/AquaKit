@@ -6,9 +6,9 @@
 >
 > This project is currently being built live on YouTube! Follow along and learn as I build this AI SaaS starter kit from scratch.
 >
-> 📺 **[Subscribe to my YouTube channel](https://www.youtube.com/@0xAquaWolf)** to catch all the episodes
->
 > 🎬 **[Watch the complete build series](https://www.youtube.com/watch?v=4Q85SxxnUZc&list=PLwbt1uBf9iqDQyGKEJVj2iA3FFsNxMiXj&pp=gAQB)** - Building AquaKit live!
+>
+> 📺 **[Subscribe to my YouTube channel](https://www.youtube.com/@0xAquaWolf)** to catch all the episodes
 
 <!-- PROJECT SHIELDS -->
 <div align="center">
@@ -25,9 +25,9 @@
 <div align="center">
 
   <p align="center">
-    The complete AI SaaS starter kit with the ultimate developer stack - Next.js, TailwindCSS, Claude Code + Cursor, Better Auth, Convex, Trigger.dev, and Polar.sh. Ship your AI SaaS faster than ever.
+    The complete AI SaaS starter kit with the ultimate developer stack - Next.js, TailwindCSS, Claude Code + Cursor, Better Auth, Convex, and Polar.sh. Ship your AI SaaS faster than ever.
     <br />
-    <a href="#demo">View Demo</a>
+    <a href="https://github.com/0xAquaWolf/AquaKit">View Demo</a>
     ·
     <a href="https://github.com/0xAquaWolf/AquaKit/issues">Report Bug</a>
     ·
@@ -45,9 +45,37 @@
 
 </div>
 
-AquaKit is the ultimate AI SaaS starter kit designed to dramatically accelerate your development process. Built with today's most powerful developer tools - Next.js 15, TailwindCSS, Claude Code + Cursor, Better Auth, Convex, Trigger.dev, and Polar.sh - this starter kit eliminates months of setup and configuration, allowing you to focus on building your unique AI features and getting to market faster.
+<br>
+<h3 align="center">Built With</h3>
+<div align="center">
 
-**The entire stack is optimized for speed:** From AI-powered development with Claude Code and Cursor, to real-time data with Convex, automated workflows with Trigger.dev, and seamless monetization with Polar.sh - every tool is chosen to maximize developer productivity and reduce time-to-market.
+### 🧠 AI Development Stack
+
+<img src="https://img.shields.io/badge/Claude_Code-FF6B35?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code">
+<img src="https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" alt="Cursor">
+
+### 🚀 Frontend Stack
+
+<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+
+### ⚡ Backend & Infrastructure Stack
+
+<img src="https://img.shields.io/badge/Convex-FF6B35?style=for-the-badge&logo=convex&logoColor=white" alt="Convex">
+<img src="https://img.shields.io/badge/Better_Auth-4285F4?style=for-the-badge&logo=auth0&logoColor=white" alt="Better Auth">
+
+### 💰 Monetization Stack
+
+<img src="https://img.shields.io/badge/Polar.sh-6366F1?style=for-the-badge&logo=polar&logoColor=white" alt="Polar.sh">
+
+</div>
+<br>
+
+AquaKit is the ultimate AI SaaS starter kit designed to dramatically accelerate your development process. Built with today's most powerful developer tools - Next.js 15, TailwindCSS, Claude Code + Cursor, Better Auth, Convex, and Polar.sh - this starter kit eliminates months of setup and configuration, allowing you to focus on building your unique AI features and getting to market faster.
+
+**The entire stack is optimized for speed:** From AI-powered development with Claude Code and Cursor, to real-time data with Convex including automated workflows with crons and durable functions, and seamless monetization with Polar.sh - every tool is chosen to maximize developer productivity and reduce time-to-market.
 
 Key Features:
 
@@ -56,7 +84,7 @@ Key Features:
 - **👤 User Management**: Complete user profiles with avatar support and session handling
 - **🔑 Better Auth Integration**: Secure authentication with Convex backend integration
 - **⚡ Real-time Everything**: Convex provides instant data synchronization and serverless functions
-- **🤖 Background Jobs**: Trigger.dev for reliable AI processing, webhooks, and scheduled tasks
+- **🤖 Background Jobs**: Convex crons and durable functions for reliable AI processing, webhooks, and scheduled tasks
 - **💰 Monetization Built-in**: Polar.sh integration for subscriptions, payments, and customer management
 - **🎨 Beautiful UI**: TailwindCSS v4 with modern, responsive components and improved login forms
 - **📱 Mobile-First**: Responsive design that works perfectly on all devices
@@ -100,35 +128,6 @@ Key Features:
 - **Quick Admin Setup**: Streamlined admin configuration with QUICK_ADMIN_SETUP.md
 - **Developer Experience**: Improved development workflows and debugging capabilities
 
-<br>
-<h3 align="center">Built With</h3>
-<div align="center">
-
-### 🧠 AI Development Stack
-
-<img src="https://img.shields.io/badge/Claude_Code-FF6B35?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code">
-<img src="https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" alt="Cursor">
-
-### 🚀 Frontend Stack
-
-<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
-<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
-
-### ⚡ Backend & Infrastructure Stack
-
-<img src="https://img.shields.io/badge/Convex-FF6B35?style=for-the-badge&logo=convex&logoColor=white" alt="Convex">
-<img src="https://img.shields.io/badge/Better_Auth-4285F4?style=for-the-badge&logo=auth0&logoColor=white" alt="Better Auth">
-<img src="https://img.shields.io/badge/Trigger.dev-000000?style=for-the-badge&logo=trigger&logoColor=white" alt="Trigger.dev">
-
-### 💰 Monetization Stack
-
-<img src="https://img.shields.io/badge/Polar.sh-6366F1?style=for-the-badge&logo=polar&logoColor=white" alt="Polar.sh">
-
-</div>
-<br>
-
 <!-- GETTING STARTED -->
 
 ## Getting Started
@@ -145,14 +144,31 @@ To get a local copy up and running, follow these simple steps.
 To run this project, you will need to add the following environment variables to your `.env.local` file:
 
 ```bash
+# Convex
 NEXT_PUBLIC_CONVEX_URL="your-convex-deployment-url"
-CONVEX_SITE_URL="http://localhost:3000"
+NEXT_PUBLIC_CONVEX_SITE_URL="http://localhost:3000"
+CONVEX_SITE_URL=""
+CONVEX_DEPLOYMENT=""
 
-# OAuth Provider Credentials (Optional)
+# Nextjs
+SITE_URL="https://localhost:3000"
+NEXT_PUBLIC_SITE_URL="https://localhost:3000"
+
+# Better Auth
+BETTER_AUTH_URL="http://localhost:3000"
+# https://www.better-auth.com/docs/installation#set-environment-variables
+BETTER_AUTH_SECRET=""
+
+# === OAuth Provider Credentials ===
+# GITHUB
 GITHUB_CLIENT_ID="your-github-client-id"
 GITHUB_CLIENT_SECRET="your-github-client-secret"
+
+# Google
 GOOGLE_CLIENT_ID="your-google-client-id"
 GOOGLE_CLIENT_SECRET="your-google-client-secret"
+
+# Discord
 DISCORD_CLIENT_ID="your-discord-client-id"
 DISCORD_CLIENT_SECRET="your-discord-client-secret"
 ```
@@ -350,7 +366,7 @@ AquaKit dramatically reduces development time by providing a complete, pre-integ
 
 - **Ship in days, not months**: Skip the tedious setup and focus on your unique AI features
 - **Build with AI assistance**: Claude Code + Cursor provide intelligent code completion and generation
-- **Scale effortlessly**: Real-time backend with Convex, background jobs with Trigger.dev
+- **Scale effortlessly**: Real-time backend with Convex including background jobs with crons and durable functions
 - **Monetize immediately**: Built-in payment and subscription system with Polar.sh
 - **Learn the modern stack**: Perfect reference implementation of today's best developer tools
 
@@ -374,9 +390,8 @@ AquaKit dramatically reduces development time by providing a complete, pre-integ
 
 The current implementation uses managed cloud services for rapid development and deployment:
 
-- **Convex** for real-time backend and database
+- **Convex** for real-time backend, database, and background processing (crons, durable functions)
 - **Better Auth** (package-based, not a service like Clerk)
-- **Trigger.dev** cloud for background jobs
 - **Polar.sh** for payments and subscriptions
 
 _Perfect for: Getting to market quickly, prototyping, teams that prefer managed services_
@@ -387,8 +402,7 @@ A completely self-hostable version for maximum data ownership:
 
 - **One-click Docker deployment** to any server (Hetzner, DigitalOcean, Fly.io, etc.)
 - **Containerized Convex** - self-hosted to own all your data while keeping the same functionality
-- **Better Auth** (already package-based, perfect for self-hosting)
-- **Self-hosted Trigger.dev** for background job processing
+- **Better Auth**
 - **Self-hosted payment processing**
 
 _Perfect for: Complete data control, enterprise deployments, privacy-focused organizations_
@@ -417,10 +431,8 @@ _Perfect for: Complete data control, enterprise deployments, privacy-focused org
 
 - [x] **Role-based access control** with environment variable configuration
 - [x] **Admin dashboard** with comprehensive user management interface
-- [x] **Debug tools** for OAuth provider linking and account diagnostics
 - [x] **User management** with search, role assignment, and activity tracking
 - [x] **AdminGuard and AdminPageLayout** reusable components
-- [x] **Interactive setup script** (`scripts/setup-admin.js`)
 - [x] **Production-safe operations** with development-only destructive actions
 - [x] **Complete documentation** (admin-setup.md, admin-components.md)
 - [x] **Quick setup guide** (QUICK_ADMIN_SETUP.md)
@@ -428,10 +440,12 @@ _Perfect for: Complete data control, enterprise deployments, privacy-focused org
 
 ### 🚧 AI & Automation Features (In Progress)
 
-- [ ] Trigger.dev background job examples
+- [ ] Convex cron job examples for scheduled AI tasks
+- [ ] Durable function examples for long-running AI processes
+- [ ] Action retrier patterns for reliable external API calls
+- [ ] Workflow examples using Convex's background processing
 - [ ] AI integration patterns and examples
 - [ ] Claude API integration templates
-- [ ] Automated workflow examples
 
 ### 💰 Monetization Features (Planned)
 
@@ -444,9 +458,6 @@ _Perfect for: Complete data control, enterprise deployments, privacy-focused org
 
 - [ ] **Docker containerization** with one-click deployment
 - [ ] **Containerized Convex** - self-hosted to maintain full data ownership while keeping all functionality
-- [ ] **Better Auth integration** (already package-based, perfect for containerized deployments)
-- [ ] **Self-hosted Trigger.dev** for background job processing
-- [ ] **Payment system alternatives** for self-hosted deployments
 - [ ] **Environment configuration wizard** for easy setup
 - [ ] **Health monitoring and logging** for self-hosted instances
 - [ ] **Backup and restore utilities** for complete data control
@@ -455,7 +466,6 @@ _Perfect for: Complete data control, enterprise deployments, privacy-focused org
 
 - [ ] Component library expansion
 - [ ] Testing suite implementation
-- [ ] CI/CD pipeline setup
 - [ ] API rate limiting and usage tracking
 - [ ] Performance optimization
 - [ ] Mobile responsiveness improvements
@@ -485,7 +495,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 <!-- CONTACT -->
 
@@ -543,8 +553,9 @@ All guides include step-by-step instructions, troubleshooting tips, and security
 ### ⚡ Backend & Infrastructure
 
 - [Convex Documentation](https://docs.convex.dev/)
+- [Convex Background Processing](https://docs.convex.dev/scheduling)
+- [Convex Cron Jobs](https://docs.convex.dev/scheduling/cron-jobs)
 - [Better Auth Documentation](https://www.better-auth.com/)
-- [Trigger.dev Documentation](https://trigger.dev/docs)
 
 ### 💰 Monetization & Business
 
